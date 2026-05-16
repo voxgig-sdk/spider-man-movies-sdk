@@ -1,0 +1,32 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 4
+  metrics: count: path: 4
+  metrics: count: method: 4
+
+  entity: justwatch: {
+    path: "/justwatch": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: media: {
+    path: "/media/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: photo: {
+    path: "/photo/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: search: {
+    path: "/search": {
+      op: load: method: *GET
+    }
+  }
+
+}

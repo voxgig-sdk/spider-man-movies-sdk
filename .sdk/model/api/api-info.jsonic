@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "imdbot@iamidiotareyoutoo.com"
+      }
+      description: "Free Movie DB: The Free Movie Database API. The FM-DB API is a RESTful web service to obtain movie informations. All content and images on the site are contributed and maintained by our users. No API keys or Web Scrapping techniques are used in the generation of any responses by this API."
+      license: {
+        name: "GNU Affero General Public License 3.0"
+        url: "https://github.com/TelegramPlayGround/Unofficial-IMDb-API/raw/main/LICENSE"
+      }
+      servers: [
+        {
+          url: "https://imdb.iamidiotareyoutoo.com"
+        }
+      ]
+      termsOfService: "/legal"
+      title: "Free Movie DB - The Free Movie Database API"
+      version: "0.3.1"
+    }
+  }
+}
+
+}

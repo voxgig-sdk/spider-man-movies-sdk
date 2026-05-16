@@ -1,0 +1,64 @@
+# Entity: photo
+
+main: kit: entity: photo: {
+
+  alias: field: {}
+
+  name: "photo"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "h"
+                orig: "h"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "w"
+                orig: "w"
+                reqd: false
+                type: "`$ANY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/photo/{id}"
+          parts: [
+            "photo"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "h"
+              "id"
+              "w"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

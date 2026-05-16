@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "justwatch": {
+      "JUSTWATCH00": {},
+      "JUSTWATCH01": {},
+      "JUSTWATCH02": {}
+    }
+  },
+  "new": {
+    "justwatch": {
+      "justwatch_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,32 @@
+# BasicMediaFlow
+
+main: kit: flow: BasicMediaFlow:
+{
+  entity: "media",
+  kind: "basic",
+  name: "BasicMediaFlow",
+  step: [
+    {
+      input: {
+        ref: "media_ref01",
+        srcdatavar: "media_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "media01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-media_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMediaFlow"
+}
