@@ -3,7 +3,7 @@ package utility
 import (
 	"fmt"
 
-	"github.com/voxgig-sdk/spider-man-movies-sdk/core"
+	"github.com/voxgig-sdk/spider-man-movies-sdk/go/core"
 )
 
 func resultBasicUtil(ctx *core.Context) *core.Result {

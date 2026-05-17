@@ -1,9 +1,15 @@
 {
   "existing": {
     "justwatch": {
-      "JUSTWATCH00": {},
-      "JUSTWATCH01": {},
-      "JUSTWATCH02": {}
+      "JUSTWATCH00": {
+        "id": "JUSTWATCH00"
+      },
+      "JUSTWATCH01": {
+        "id": "JUSTWATCH01"
+      },
+      "JUSTWATCH02": {
+        "id": "JUSTWATCH02"
+      }
     }
   },
   "new": {

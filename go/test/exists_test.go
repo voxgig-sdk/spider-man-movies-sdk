@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/spider-man-movies-sdk"
+	sdk "github.com/voxgig-sdk/spider-man-movies-sdk/go"
 )
 
 func TestExists(t *testing.T) {

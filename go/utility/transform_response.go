@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/spider-man-movies-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/spider-man-movies-sdk/core"
+	"github.com/voxgig-sdk/spider-man-movies-sdk/go/core"
 )
 
 func transformResponseUtil(ctx *core.Context) any {

@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/spider-man-movies-sdk/core"
+	"github.com/voxgig-sdk/spider-man-movies-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/spider-man-movies-sdk/go/utility/struct"
 )
 
 type PhotoEntity struct {

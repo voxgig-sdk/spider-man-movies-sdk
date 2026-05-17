@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/spider-man-movies-sdk/core"
+import "github.com/voxgig-sdk/spider-man-movies-sdk/go/core"
 
 func prepareMethodUtil(ctx *core.Context) string {
 	opname := ctx.Op.Name

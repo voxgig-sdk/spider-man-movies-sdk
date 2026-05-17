@@ -3,9 +3,9 @@ package utility
 import (
 	"regexp"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/spider-man-movies-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/spider-man-movies-sdk/core"
+	"github.com/voxgig-sdk/spider-man-movies-sdk/go/core"
 )
 
 func makeUrlUtil(ctx *core.Context) (string, error) {

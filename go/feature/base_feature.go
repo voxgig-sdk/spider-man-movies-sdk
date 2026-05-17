@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/spider-man-movies-sdk/core"
+	"github.com/voxgig-sdk/spider-man-movies-sdk/go/core"
 )
 
 type BaseFeature struct {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/spider-man-movies-sdk"
-	"github.com/voxgig-sdk/spider-man-movies-sdk/core"
+	sdk "github.com/voxgig-sdk/spider-man-movies-sdk/go"
+	"github.com/voxgig-sdk/spider-man-movies-sdk/go/core"
 )
 
 func TestMediaDirect(t *testing.T) {

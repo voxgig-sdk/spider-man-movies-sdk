@@ -1,10 +1,10 @@
 package voxgigspidermanmoviessdk
 
 import (
-	"github.com/voxgig-sdk/spider-man-movies-sdk/core"
-	"github.com/voxgig-sdk/spider-man-movies-sdk/entity"
-	"github.com/voxgig-sdk/spider-man-movies-sdk/feature"
-	_ "github.com/voxgig-sdk/spider-man-movies-sdk/utility"
+	"github.com/voxgig-sdk/spider-man-movies-sdk/go/core"
+	"github.com/voxgig-sdk/spider-man-movies-sdk/go/entity"
+	"github.com/voxgig-sdk/spider-man-movies-sdk/go/feature"
+	_ "github.com/voxgig-sdk/spider-man-movies-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

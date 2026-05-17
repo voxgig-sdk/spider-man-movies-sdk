@@ -1,9 +1,15 @@
 {
   "existing": {
     "photo": {
-      "PHOTO00": {},
-      "PHOTO01": {},
-      "PHOTO02": {}
+      "PHOTO00": {
+        "id": "PHOTO00"
+      },
+      "PHOTO01": {
+        "id": "PHOTO01"
+      },
+      "PHOTO02": {
+        "id": "PHOTO02"
+      }
     }
   },
   "new": {
