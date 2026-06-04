@@ -67,14 +67,12 @@ function justwatch_direct_setup($mockres)
     $env = Runner::env_override([
         "SPIDERMANMOVIES_TEST_JUSTWATCH_ENTID" => [],
         "SPIDERMANMOVIES_TEST_LIVE" => "FALSE",
-        "SPIDERMANMOVIES_APIKEY" => "NONE",
     ]);
 
     $live = $env["SPIDERMANMOVIES_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["SPIDERMANMOVIES_APIKEY"],
         ];
         $client = new SpiderManMoviesSDK($merged_opts);
         return [

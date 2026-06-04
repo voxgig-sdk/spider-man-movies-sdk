@@ -82,7 +82,6 @@ def media_basic_setup(extra)
     "SPIDERMANMOVIES_TEST_MEDIA_ENTID" => idmap,
     "SPIDERMANMOVIES_TEST_LIVE" => "FALSE",
     "SPIDERMANMOVIES_TEST_EXPLAIN" => "FALSE",
-    "SPIDERMANMOVIES_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +93,6 @@ def media_basic_setup(extra)
   if env["SPIDERMANMOVIES_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["SPIDERMANMOVIES_APIKEY"],
       },
       extra || {},
     ])

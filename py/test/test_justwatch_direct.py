@@ -59,14 +59,12 @@ def _justwatch_direct_setup(mockres):
     env = runner.env_override({
         "SPIDERMANMOVIES_TEST_JUSTWATCH_ENTID": {},
         "SPIDERMANMOVIES_TEST_LIVE": "FALSE",
-        "SPIDERMANMOVIES_APIKEY": "NONE",
     })
 
     live = env.get("SPIDERMANMOVIES_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("SPIDERMANMOVIES_APIKEY"),
         }
         client = SpiderManMoviesSDK(merged_opts)
         return {

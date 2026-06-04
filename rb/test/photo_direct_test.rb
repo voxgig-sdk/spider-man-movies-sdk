@@ -71,14 +71,12 @@ def photo_direct_setup(mockres)
   env = Runner.env_override({
     "SPIDERMANMOVIES_TEST_PHOTO_ENTID" => {},
     "SPIDERMANMOVIES_TEST_LIVE" => "FALSE",
-    "SPIDERMANMOVIES_APIKEY" => "NONE",
   })
 
   live = env["SPIDERMANMOVIES_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["SPIDERMANMOVIES_APIKEY"],
     }
     client = SpiderManMoviesSDK.new(merged_opts)
     return {

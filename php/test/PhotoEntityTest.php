@@ -85,7 +85,6 @@ function photo_basic_setup($extra)
         "SPIDERMANMOVIES_TEST_PHOTO_ENTID" => $idmap,
         "SPIDERMANMOVIES_TEST_LIVE" => "FALSE",
         "SPIDERMANMOVIES_TEST_EXPLAIN" => "FALSE",
-        "SPIDERMANMOVIES_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function photo_basic_setup($extra)
     if ($env["SPIDERMANMOVIES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SPIDERMANMOVIES_APIKEY"],
             ],
             $extra ?? [],
         ]);
