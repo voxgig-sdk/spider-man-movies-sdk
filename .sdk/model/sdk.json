@@ -1,46 +1,13 @@
 {
-  "name": "spider-man-movies",
-  "origin": "voxgig-sdk",
   "def": "spider-man-movies_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "contact": {
-          "email": "imdbot@iamidiotareyoutoo.com"
-        },
-        "description": "Free Movie DB: The Free Movie Database API. The FM-DB API is a RESTful web service to obtain movie informations. All content and images on the site are contributed and maintained by our users. No API keys or Web Scrapping techniques are used in the generation of any responses by this API.",
-        "license": {
-          "name": "GNU Affero General Public License 3.0",
-          "url": "https://github.com/TelegramPlayGround/Unofficial-IMDb-API/raw/main/LICENSE"
-        },
-        "servers": [
-          {
-            "url": "https://imdb.iamidiotareyoutoo.com"
-          }
-        ],
-        "termsOfService": "/legal",
-        "title": "Free Movie DB - The Free Movie Database API",
-        "version": "0.3.1",
-        "tagline": "Search movie, TV, and Spider-Man title data through a community-maintained Free Movie DB endpoint",
-        "homepage": "https://imdb.iamidiotareyoutoo.com",
-        "docs_url": "https://imdb.iamidiotareyoutoo.com/docs/index.html",
-        "license_short": "GNU Affero General Public License 3.0 (AGPL-3.0)",
-        "license_md": "- Released under the **GNU Affero General Public License 3.0 (AGPL-3.0)**.\n- Network-deployed derivative works must also offer their source under AGPL-3.0.\n- The project explicitly states it is **not endorsed by or affiliated with IMDb.com**.\n- Content and images are contributed and maintained by users; verify any reuse against AGPL terms.",
-        "about_md": "[Free Movie DB (FM-DB)](https://imdb.iamidiotareyoutoo.com) is a community-maintained RESTful service that exposes movie and television metadata, including the Spider-Man movie catalogue used by the [freepublicapis.com listing](https://freepublicapis.com/spider-man-movies-api). The project describes itself as the \"Free Movie Database API\" and states that no API keys or web-scraping techniques are required to access responses.\n\nWhat you get from the API:\n- Title search (e.g. `GET /search?q=Spiderman`) returning movies, shows, and related media records.\n- Media metadata such as titles, release years, and cast/actor details.\n- Photo / image references attached to title records.\n- JustWatch-style streaming availability information surfaced alongside title data.\n\nOperational notes: the API is open and unauthenticated, and the freepublicapis.com listing reports **CORS is disabled** for the public endpoint. No official rate limits are published; the project is donation-supported and tracks issues via GitHub.",
-        "entity_desc": {
-          "justwatch": "Streaming-availability information (in the style of JustWatch) returned alongside title records.",
-          "media": "Movie and TV title records — fields such as title, release year, and cast/actor details.",
-          "photo": "Image / poster references associated with a media title.",
-          "search": "Title lookup endpoint, e.g. `GET /search?q=<query>`, used to find movies and shows by name."
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -49,36 +16,43 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "justwatch": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "justwatch",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "l",
                         "orig": "l",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "q",
                         "orig": "q",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -96,38 +70,38 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "media": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "media",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "id",
                         "orig": "id",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -145,56 +119,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "photo": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "photo",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "id",
                         "orig": "id",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "h",
                         "orig": "h",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "w",
                         "orig": "w",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -214,62 +188,62 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "search": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "search",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "lsn",
                         "orig": "lsn",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "q",
                         "orig": "q",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "tt",
                         "orig": "tt",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "v",
                         "orig": "v",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -289,15 +263,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
@@ -305,9 +275,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -315,6 +282,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -323,25 +298,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -357,20 +318,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -385,28 +358,34 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicJustwatchFlow": {
+          "active": true,
           "entity": "justwatch",
+          "key$": "BasicJustwatchFlow",
           "kind": "basic",
           "name": "BasicJustwatchFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "justwatch_ref01",
                 "srcdatavar": "justwatch_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -414,23 +393,21 @@
                     "mark": "Mark01-justwatch_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicJustwatchFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicMediaFlow": {
+          "active": true,
           "entity": "media",
+          "key$": "BasicMediaFlow",
           "kind": "basic",
           "name": "BasicMediaFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "media_ref01",
                 "srcdatavar": "media_ref01_data",
@@ -440,6 +417,7 @@
                 "id": "media01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -447,22 +425,21 @@
                     "mark": "Mark01-media_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicMediaFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicPhotoFlow": {
+          "active": true,
           "entity": "photo",
+          "key$": "BasicPhotoFlow",
           "kind": "basic",
           "name": "BasicPhotoFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "photo_ref01",
                 "srcdatavar": "photo_ref01_data",
@@ -472,6 +449,7 @@
                 "id": "photo01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -479,28 +457,29 @@
                     "mark": "Mark01-photo_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicPhotoFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicSearchFlow": {
+          "active": true,
           "entity": "search",
+          "key$": "BasicSearchFlow",
           "kind": "basic",
           "name": "BasicSearchFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "search_ref01",
                 "srcdatavar": "search_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -508,28 +487,56 @@
                     "mark": "Mark01-search_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicSearchFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "contact": {
+          "email": "imdbot@iamidiotareyoutoo.com"
+        },
+        "description": "Free Movie DB: The Free Movie Database API. The FM-DB API is a RESTful web service to obtain movie informations. All content and images on the site are contributed and maintained by our users. No API keys or Web Scrapping techniques are used in the generation of any responses by this API.",
+        "license": {
+          "name": "GNU Affero General Public License 3.0",
+          "url": "https://github.com/TelegramPlayGround/Unofficial-IMDb-API/raw/main/LICENSE"
+        },
+        "servers": [
+          {
+            "url": "https://imdb.iamidiotareyoutoo.com"
+          }
+        ],
+        "termsOfService": "/legal",
+        "title": "Free Movie DB - The Free Movie Database API",
+        "version": "0.3.1"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "spider-man-movies"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "spider-man-movies"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -544,19 +551,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "spider-man-movies"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -571,138 +578,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "spider-man-movies"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "spider-man-movies"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "spider-man-movies"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "spider-man-movies"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "spider-man-movies"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "spider-man-movies"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "spider-man-movies"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "spider-man-movies"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "spider-man-movies"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "spider-man-movies",
+  "origin": "voxgig-sdk"
 }

@@ -1,20 +1,8 @@
 # SpiderManMovies SDK
 
-Search movie, TV, and Spider-Man title data through a community-maintained Free Movie DB endpoint
+Free Movie DB - The Free Movie Database API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Free Movie DB - The Free Movie Database API
-
-[Free Movie DB (FM-DB)](https://imdb.iamidiotareyoutoo.com) is a community-maintained RESTful service that exposes movie and television metadata, including the Spider-Man movie catalogue used by the [freepublicapis.com listing](https://freepublicapis.com/spider-man-movies-api). The project describes itself as the "Free Movie Database API" and states that no API keys or web-scraping techniques are required to access responses.
-
-What you get from the API:
-- Title search (e.g. `GET /search?q=Spiderman`) returning movies, shows, and related media records.
-- Media metadata such as titles, release years, and cast/actor details.
-- Photo / image references attached to title records.
-- JustWatch-style streaming availability information surfaced alongside title data.
-
-Operational notes: the API is open and unauthenticated, and the freepublicapis.com listing reports **CORS is disabled** for the public endpoint. No official rate limits are published; the project is donation-supported and tracks issues via GitHub.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install spider-man-movies-sdk
 luarocks install spider-man-movies-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { SpiderManMoviesSDK } from 'spider-man-movies'
 
-const client = new SpiderManMoviesSDK({})
+const client = new SpiderManMoviesSDK({
+  apikey: process.env.SPIDER-MAN-MOVIES_APIKEY,
+})
 
+// Load justwatch data
+const justwatch = await client.Justwatch().load({})
+console.log(justwatch.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,10 +90,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Justwatch** | Streaming-availability information (in the style of JustWatch) returned alongside title records. | `/justwatch` |
-| **Media** | Movie and TV title records — fields such as title, release year, and cast/actor details. | `/media/{id}` |
-| **Photo** | Image / poster references associated with a media title. | `/photo/{id}` |
-| **Search** | Title lookup endpoint, e.g. `GET /search?q=<query>`, used to find movies and shows by name. | `/search` |
+| **Justwatch** |  | `/justwatch` |
+| **Media** |  | `/media/{id}` |
+| **Photo** |  | `/photo/{id}` |
+| **Search** |  | `/search` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,15 +103,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from spidermanmovies_sdk import SpiderManMoviesSDK
 
-client = SpiderManMoviesSDK({})
+client = SpiderManMoviesSDK({
+    "apikey": os.environ.get("SPIDER-MAN-MOVIES_APIKEY"),
+})
 
 
 # Load a specific justwatch
-justwatch, err = client.Justwatch(None).load(
-    {"id": "example_id"}, None
-)
+justwatch, err = client.Justwatch().load({"id": "example_id"})
+print(justwatch)
 ```
 
 ### PHP
@@ -128,13 +122,14 @@ justwatch, err = client.Justwatch(None).load(
 <?php
 require_once 'spidermanmovies_sdk.php';
 
-$client = new SpiderManMoviesSDK([]);
+$client = new SpiderManMoviesSDK([
+    "apikey" => getenv("SPIDER-MAN-MOVIES_APIKEY"),
+]);
 
 
 // Load a specific justwatch
-[$justwatch, $err] = $client->Justwatch(null)->load(
-    ["id" => "example_id"], null
-);
+[$justwatch, $err] = $client->Justwatch()->load(["id" => "example_id"]);
+print_r($justwatch);
 ```
 
 ### Golang
@@ -142,8 +137,13 @@ $client = new SpiderManMoviesSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/spider-man-movies-sdk/go"
 
-client := sdk.NewSpiderManMoviesSDK(map[string]any{})
+client := sdk.NewSpiderManMoviesSDK(map[string]any{
+    "apikey": os.Getenv("SPIDER-MAN-MOVIES_APIKEY"),
+})
 
+// Load justwatch data
+justwatch, err := client.Justwatch(nil).Load(map[string]any{}, nil)
+fmt.Println(justwatch)
 ```
 
 ### Ruby
@@ -151,13 +151,14 @@ client := sdk.NewSpiderManMoviesSDK(map[string]any{})
 ```ruby
 require_relative "SpiderManMovies_sdk"
 
-client = SpiderManMoviesSDK.new({})
+client = SpiderManMoviesSDK.new({
+  "apikey" => ENV["SPIDER-MAN-MOVIES_APIKEY"],
+})
 
 
 # Load a specific justwatch
-justwatch, err = client.Justwatch(nil).load(
-  { "id" => "example_id" }, nil
-)
+justwatch, err = client.Justwatch().load({ "id" => "example_id" })
+puts justwatch
 ```
 
 ### Lua
@@ -165,13 +166,14 @@ justwatch, err = client.Justwatch(nil).load(
 ```lua
 local sdk = require("spider-man-movies_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("SPIDER-MAN-MOVIES_APIKEY"),
+})
 
 
 -- Load a specific justwatch
-local justwatch, err = client:Justwatch(nil):load(
-  { id = "example_id" }, nil
-)
+local justwatch, err = client:Justwatch():load({ id = "example_id" })
+print(justwatch)
 ```
 
 ## Unit testing in offline mode
@@ -190,25 +192,21 @@ const result = await client.Justwatch().load({ id: 'test01' })
 ### Python
 
 ```python
-client = SpiderManMoviesSDK.test(None, None)
-result, err = client.Justwatch(None).load(
-    {"id": "test01"}, None
-)
+client = SpiderManMoviesSDK.test()
+result, err = client.Justwatch().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = SpiderManMoviesSDK::test(null, null);
-[$result, $err] = $client->Justwatch(null)->load(
-    ["id" => "test01"], null
-);
+$client = SpiderManMoviesSDK::test();
+[$result, $err] = $client->Justwatch()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Justwatch(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -217,19 +215,15 @@ result, err := client.Justwatch(nil).Load(
 ### Ruby
 
 ```ruby
-client = SpiderManMoviesSDK.test(nil, nil)
-result, err = client.Justwatch(nil).load(
-  { "id" => "test01" }, nil
-)
+client = SpiderManMoviesSDK.test
+result, err = client.Justwatch().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Justwatch(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Justwatch():load({ id = "test01" })
 ```
 
 ## How it works
@@ -333,16 +327,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Free Movie DB - The Free Movie Database API
-
-- Upstream: [https://imdb.iamidiotareyoutoo.com](https://imdb.iamidiotareyoutoo.com)
-- API docs: [https://imdb.iamidiotareyoutoo.com/docs/index.html](https://imdb.iamidiotareyoutoo.com/docs/index.html)
-
-- Released under the **GNU Affero General Public License 3.0 (AGPL-3.0)**.
-- Network-deployed derivative works must also offer their source under AGPL-3.0.
-- The project explicitly states it is **not endorsed by or affiliated with IMDb.com**.
-- Content and images are contributed and maintained by users; verify any reuse against AGPL terms.
 
 ---
 

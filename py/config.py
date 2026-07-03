@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://imdb.iamidiotareyoutoo.com",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -31,26 +34,28 @@ def make_config():
         "name": "justwatch",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "l",
                       "orig": "l",
                       "reqd": False,
                       "type": "`$ANY`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "q",
                       "orig": "q",
                       "reqd": True,
                       "type": "`$ANY`",
-                      "active": True,
                     },
                   ],
                 },
@@ -69,11 +74,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -86,18 +89,20 @@ def make_config():
         "name": "media",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -116,11 +121,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -133,36 +136,38 @@ def make_config():
         "name": "photo",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "h",
                       "orig": "h",
                       "reqd": False,
                       "type": "`$ANY`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "w",
                       "orig": "w",
                       "reqd": False,
                       "type": "`$ANY`",
-                      "active": True,
                     },
                   ],
                 },
@@ -183,11 +188,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -200,42 +203,44 @@ def make_config():
         "name": "search",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "lsn",
                       "orig": "lsn",
                       "reqd": False,
                       "type": "`$ANY`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "q",
                       "orig": "q",
                       "reqd": False,
                       "type": "`$ANY`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "tt",
                       "orig": "tt",
                       "reqd": False,
                       "type": "`$ANY`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "v",
                       "orig": "v",
                       "reqd": False,
                       "type": "`$ANY`",
-                      "active": True,
                     },
                   ],
                 },
@@ -256,11 +261,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

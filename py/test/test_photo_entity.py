@@ -91,6 +91,7 @@ def _photo_basic_setup(extra):
         "SPIDERMANMOVIES_TEST_PHOTO_ENTID": idmap,
         "SPIDERMANMOVIES_TEST_LIVE": "FALSE",
         "SPIDERMANMOVIES_TEST_EXPLAIN": "FALSE",
+        "SPIDERMANMOVIES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _photo_basic_setup(extra):
     if env.get("SPIDERMANMOVIES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("SPIDERMANMOVIES_APIKEY"),
             },
             extra or {},
         ])

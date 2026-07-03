@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'SPIDER_MAN_MOVIES_TEST_SEARCH_ENTID': idmap,
     'SPIDER_MAN_MOVIES_TEST_LIVE': 'FALSE',
     'SPIDER_MAN_MOVIES_TEST_EXPLAIN': 'FALSE',
+    'SPIDER_MAN_MOVIES_APIKEY': 'NONE',
   })
 
   idmap = env['SPIDER_MAN_MOVIES_TEST_SEARCH_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new SpiderManMoviesSDK(merge([
       {
+        apikey: env.SPIDER_MAN_MOVIES_APIKEY,
       },
       extra
     ]))

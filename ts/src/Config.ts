@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://imdb.iamidiotareyoutoo.com',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -66,26 +70,28 @@ class Config {
       "name": "justwatch",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "l",
                     "orig": "l",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "q",
                     "orig": "q",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -104,11 +110,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -121,18 +125,20 @@ class Config {
       "name": "media",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -151,11 +157,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -168,36 +172,38 @@ class Config {
       "name": "photo",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "h",
                     "orig": "h",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "w",
                     "orig": "w",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -218,11 +224,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -235,42 +239,44 @@ class Config {
       "name": "search",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "lsn",
                     "orig": "lsn",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "q",
                     "orig": "q",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "tt",
                     "orig": "tt",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "v",
                     "orig": "v",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -291,11 +297,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

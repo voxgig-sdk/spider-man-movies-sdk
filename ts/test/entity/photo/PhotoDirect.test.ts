@@ -80,12 +80,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'SPIDERMANMOVIES_TEST_PHOTO_ENTID': {},
     'SPIDERMANMOVIES_TEST_LIVE': 'FALSE',
+    'SPIDERMANMOVIES_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.SPIDERMANMOVIES_TEST_LIVE
 
   if (live) {
     const client = new SpiderManMoviesSDK({
+      apikey: env.SPIDERMANMOVIES_APIKEY,
     })
 
     let idmap: any = env['SPIDERMANMOVIES_TEST_PHOTO_ENTID']

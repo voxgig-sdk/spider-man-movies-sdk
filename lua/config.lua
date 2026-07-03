@@ -14,6 +14,9 @@ local function make_config()
     },
     options = {
       base = "https://imdb.iamidiotareyoutoo.com",
+      auth = {
+        prefix = "Bearer",
+      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -30,26 +33,28 @@ local function make_config()
         ["name"] = "justwatch",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "l",
                       ["orig"] = "l",
                       ["reqd"] = false,
                       ["type"] = "`$ANY`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "q",
                       ["orig"] = "q",
                       ["reqd"] = true,
                       ["type"] = "`$ANY`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -68,11 +73,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },
@@ -85,18 +88,20 @@ local function make_config()
         ["name"] = "media",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -115,11 +120,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },
@@ -132,36 +135,38 @@ local function make_config()
         ["name"] = "photo",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "h",
                       ["orig"] = "h",
                       ["reqd"] = false,
                       ["type"] = "`$ANY`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "w",
                       ["orig"] = "w",
                       ["reqd"] = false,
                       ["type"] = "`$ANY`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -182,11 +187,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },
@@ -199,42 +202,44 @@ local function make_config()
         ["name"] = "search",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "lsn",
                       ["orig"] = "lsn",
                       ["reqd"] = false,
                       ["type"] = "`$ANY`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "q",
                       ["orig"] = "q",
                       ["reqd"] = false,
                       ["type"] = "`$ANY`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "tt",
                       ["orig"] = "tt",
                       ["reqd"] = false,
                       ["type"] = "`$ANY`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "v",
                       ["orig"] = "v",
                       ["reqd"] = false,
                       ["type"] = "`$ANY`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -255,11 +260,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },

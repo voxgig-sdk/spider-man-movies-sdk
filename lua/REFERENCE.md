@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -106,7 +106,7 @@ local justwatch = client:Justwatch(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Justwatch(nil):load({ id = "justwatch_id" }, nil)
+local result, err = client:Justwatch():load({ id = "justwatch_id" })
 ```
 
 ### Common Methods
@@ -152,7 +152,7 @@ local media = client:Media(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Media(nil):load({ id = "media_id" }, nil)
+local result, err = client:Media():load({ id = "media_id" })
 ```
 
 ### Common Methods
@@ -198,7 +198,7 @@ local photo = client:Photo(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Photo(nil):load({ id = "photo_id" }, nil)
+local result, err = client:Photo():load({ id = "photo_id" })
 ```
 
 ### Common Methods
@@ -244,7 +244,7 @@ local search = client:Search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Search(nil):load({ id = "search_id" }, nil)
+local result, err = client:Search():load({ id = "search_id" })
 ```
 
 ### Common Methods

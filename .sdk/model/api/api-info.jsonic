@@ -20,30 +20,7 @@ main: {
       termsOfService: "/legal"
       title: "Free Movie DB - The Free Movie Database API"
       version: "0.3.1"
-      tagline: "Search movie, TV, and Spider-Man title data through a community-maintained Free Movie DB endpoint"
-      homepage: "https://imdb.iamidiotareyoutoo.com"
-      docs_url: "https://imdb.iamidiotareyoutoo.com/docs/index.html"
-      license_short: "GNU Affero General Public License 3.0 (AGPL-3.0)"
-      license_md: `- Released under the **GNU Affero General Public License 3.0 (AGPL-3.0)**.
-- Network-deployed derivative works must also offer their source under AGPL-3.0.
-- The project explicitly states it is **not endorsed by or affiliated with IMDb.com**.
-- Content and images are contributed and maintained by users; verify any reuse against AGPL terms.`
-      about_md: `[Free Movie DB (FM-DB)](https://imdb.iamidiotareyoutoo.com) is a community-maintained RESTful service that exposes movie and television metadata, including the Spider-Man movie catalogue used by the [freepublicapis.com listing](https://freepublicapis.com/spider-man-movies-api). The project describes itself as the "Free Movie Database API" and states that no API keys or web-scraping techniques are required to access responses.
-
-What you get from the API:
-- Title search (e.g. \`GET /search?q=Spiderman\`) returning movies, shows, and related media records.
-- Media metadata such as titles, release years, and cast/actor details.
-- Photo / image references attached to title records.
-- JustWatch-style streaming availability information surfaced alongside title data.
-
-Operational notes: the API is open and unauthenticated, and the freepublicapis.com listing reports **CORS is disabled** for the public endpoint. No official rate limits are published; the project is donation-supported and tracks issues via GitHub.`
-      entity_desc: {
-        justwatch: "Streaming-availability information (in the style of JustWatch) returned alongside title records."
-        media: "Movie and TV title records — fields such as title, release year, and cast/actor details."
-        photo: "Image / poster references associated with a media title."
-        search: "Title lookup endpoint, e.g. `GET /search?q=<query>`, used to find movies and shows by name."
-      }
-      auth: false
     }
   }
 }
+

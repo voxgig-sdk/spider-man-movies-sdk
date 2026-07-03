@@ -117,12 +117,14 @@ func photoDirectSetup(mockres any) *photoDirectSetupResult {
 	env := envOverride(map[string]any{
 		"SPIDERMANMOVIES_TEST_PHOTO_ENTID": map[string]any{},
 		"SPIDERMANMOVIES_TEST_LIVE":    "FALSE",
+		"SPIDERMANMOVIES_APIKEY":       "NONE",
 	})
 
 	live := env["SPIDERMANMOVIES_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["SPIDERMANMOVIES_APIKEY"],
 		}
 		client := sdk.NewSpiderManMoviesSDK(mergedOpts)
 
