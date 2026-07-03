@@ -10,7 +10,7 @@ The TypeScript SDK for the SpiderManMovies API — a type-safe, entity-oriented 
 
 ## Install
 ```bash
-npm install spider-man-movies
+npm install @voxgig-sdk/spider-man-movies
 ```
 ## Tutorial: your first API call
 

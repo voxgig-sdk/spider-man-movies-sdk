@@ -8,12 +8,14 @@ source = {
   dir = "spider-man-movies-sdk/lua"
 }
 description = {
-  summary = "SpiderManMovies SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Free Movie DB - The Free Movie Database public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/spider-man-movies-sdk",
+  issues_url = "https://github.com/voxgig-sdk/spider-man-movies-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "spider-man-movies" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

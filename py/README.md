@@ -10,7 +10,7 @@ The Python SDK for the SpiderManMovies API — an entity-oriented client followi
 
 ## Install
 ```bash
-pip install spider-man-movies-sdk
+pip install voxgig-sdk-spider-man-movies
 ```
 
 Or install from source:

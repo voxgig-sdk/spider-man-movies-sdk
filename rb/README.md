@@ -10,13 +10,13 @@ The Ruby SDK for the SpiderManMovies API — an entity-oriented client using idi
 
 ## Install
 ```bash
-gem install spider-man-movies-sdk
+gem install voxgig-sdk-spider-man-movies
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "spider-man-movies-sdk"
+gem "voxgig-sdk-spider-man-movies"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The PHP SDK for the SpiderManMovies API — an entity-oriented client using PHP 
 
 ## Install
 ```bash
-composer require voxgig/spider-man-movies-sdk
+composer require voxgig-sdk/spider-man-movies
 ```
 
 
