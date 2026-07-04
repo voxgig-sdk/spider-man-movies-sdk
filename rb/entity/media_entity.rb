@@ -45,6 +45,7 @@ class MediaEntity
     end
   end
 
+  # @return [Media, Hash] the current Media data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class MediaEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Media fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Media.
+  #
+  # @param reqmatch [MediaLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Media, Hash] the loaded Media; raises SpiderManMoviesError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

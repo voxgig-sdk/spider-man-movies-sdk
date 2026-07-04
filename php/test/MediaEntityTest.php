@@ -49,8 +49,7 @@ class MediaEntityTest extends TestCase
         // LOAD
         $media_ref01_ent = $client->Media(null);
         $media_ref01_match_dt0 = [];
-        [$media_ref01_data_dt0_loaded, $err] = $media_ref01_ent->load($media_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $media_ref01_data_dt0_loaded = $media_ref01_ent->load($media_ref01_match_dt0, null);
         $this->assertNotNull($media_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function media_basic_setup($extra)
         "SPIDERMANMOVIES_TEST_MEDIA_ENTID" => $idmap,
         "SPIDERMANMOVIES_TEST_LIVE" => "FALSE",
         "SPIDERMANMOVIES_TEST_EXPLAIN" => "FALSE",
-        "SPIDERMANMOVIES_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function media_basic_setup($extra)
     if ($env["SPIDERMANMOVIES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SPIDERMANMOVIES_APIKEY"],
             ],
             $extra ?? [],
         ]);

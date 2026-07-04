@@ -244,24 +244,76 @@ end
 
 
 
+-- Idiomatic facade: client:justwatch():list() / client:justwatch():load({ id = ... })
+function SpiderManMoviesSDK:justwatch(data)
+  local EntityMod = require("entity.justwatch_entity")
+  if data == nil then
+    if self._justwatch == nil then
+      self._justwatch = EntityMod.new(self, nil)
+    end
+    return self._justwatch
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:justwatch() instead.
 function SpiderManMoviesSDK:Justwatch(data)
   local EntityMod = require("entity.justwatch_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:media():list() / client:media():load({ id = ... })
+function SpiderManMoviesSDK:media(data)
+  local EntityMod = require("entity.media_entity")
+  if data == nil then
+    if self._media == nil then
+      self._media = EntityMod.new(self, nil)
+    end
+    return self._media
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:media() instead.
 function SpiderManMoviesSDK:Media(data)
   local EntityMod = require("entity.media_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:photo():list() / client:photo():load({ id = ... })
+function SpiderManMoviesSDK:photo(data)
+  local EntityMod = require("entity.photo_entity")
+  if data == nil then
+    if self._photo == nil then
+      self._photo = EntityMod.new(self, nil)
+    end
+    return self._photo
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:photo() instead.
 function SpiderManMoviesSDK:Photo(data)
   local EntityMod = require("entity.photo_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
+function SpiderManMoviesSDK:search(data)
+  local EntityMod = require("entity.search_entity")
+  if data == nil then
+    if self._search == nil then
+      self._search = EntityMod.new(self, nil)
+    end
+    return self._search
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:search() instead.
 function SpiderManMoviesSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)

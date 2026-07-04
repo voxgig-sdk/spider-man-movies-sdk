@@ -9,9 +9,12 @@ The TypeScript SDK for the SpiderManMovies API — a type-safe, entity-oriented 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/spider-man-movies
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/spider-man-movies-sdk/releases](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { SpiderManMoviesSDK } from 'spider-man-movies'
+import { SpiderManMoviesSDK } from '@voxgig-sdk/spider-man-movies'
 
-const client = new SpiderManMoviesSDK({
-  apikey: process.env.SPIDER-MAN-MOVIES_APIKEY,
-})
+const client = new SpiderManMoviesSDK()
 ```
 
 ### 3. Load a justwatch
 
 ```ts
-const result = await client.Justwatch().load({ id: 'example_id' })
+const result = await client.justwatch.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = SpiderManMoviesSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.justwatch.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new SpiderManMoviesSDK({ apikey: '...' })
+const client = new SpiderManMoviesSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.justwatch
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new SpiderManMoviesSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new SpiderManMoviesSDK({
 Create a `.env.local` file at the project root:
 
 ```
-SPIDER-MAN-MOVIES_TEST_LIVE=TRUE
-SPIDER-MAN-MOVIES_APIKEY=<your-key>
+SPIDER_MAN_MOVIES_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new SpiderManMoviesSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new SpiderManMoviesSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -295,7 +292,7 @@ API path: `/search`
 
 ### Justwatch
 
-Create an instance: `const justwatch = client.Justwatch()`
+Create an instance: `const justwatch = client.justwatch`
 
 #### Operations
 
@@ -306,13 +303,13 @@ Create an instance: `const justwatch = client.Justwatch()`
 #### Example: Load
 
 ```ts
-const justwatch = await client.Justwatch().load({ id: 'justwatch_id' })
+const justwatch = await client.justwatch.load({ id: 'justwatch_id' })
 ```
 
 
 ### Media
 
-Create an instance: `const media = client.Media()`
+Create an instance: `const media = client.media`
 
 #### Operations
 
@@ -323,13 +320,13 @@ Create an instance: `const media = client.Media()`
 #### Example: Load
 
 ```ts
-const media = await client.Media().load({ id: 'media_id' })
+const media = await client.media.load({ id: 'media_id' })
 ```
 
 
 ### Photo
 
-Create an instance: `const photo = client.Photo()`
+Create an instance: `const photo = client.photo`
 
 #### Operations
 
@@ -340,13 +337,13 @@ Create an instance: `const photo = client.Photo()`
 #### Example: Load
 
 ```ts
-const photo = await client.Photo().load({ id: 'photo_id' })
+const photo = await client.photo.load({ id: 'photo_id' })
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -357,7 +354,7 @@ Create an instance: `const search = client.Search()`
 #### Example: Load
 
 ```ts
-const search = await client.Search().load({ id: 'search_id' })
+const search = await client.search.load({ id: 'search_id' })
 ```
 
 
@@ -418,7 +415,7 @@ spider-man-movies/
 Import the SDK from the package root:
 
 ```ts
-import { SpiderManMoviesSDK } from 'spider-man-movies'
+import { SpiderManMoviesSDK } from '@voxgig-sdk/spider-man-movies'
 ```
 
 ### Entity state
@@ -428,11 +425,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const justwatch = client.justwatch
+await justwatch.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// justwatch.data() now returns the loaded justwatch data
+// justwatch.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

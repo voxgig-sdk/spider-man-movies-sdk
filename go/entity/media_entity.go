@@ -85,6 +85,27 @@ func (e *MediaEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Media; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *MediaEntity) DataTyped(data ...Media) Media {
+	if len(data) > 0 {
+		return typedFrom[Media](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Media](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Media (all fields
+// optional at the wire level).
+func (e *MediaEntity) MatchTyped(match ...Media) Media {
+	if len(match) > 0 {
+		return typedFrom[Media](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Media](e.Match())
+}
+
 
 func (e *MediaEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *MediaEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, e
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// MediaLoadMatch and returns an Media. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *MediaEntity) LoadTyped(reqmatch MediaLoadMatch, ctrl map[string]any) (Media, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Media{}, err
+	}
+	return typedFrom[Media](res), nil
 }
 
 

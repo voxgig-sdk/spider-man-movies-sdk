@@ -42,8 +42,7 @@ class MediaEntityTest < Minitest::Test
     # LOAD
     media_ref01_ent = client.Media(nil)
     media_ref01_match_dt0 = {}
-    media_ref01_data_dt0_loaded, err = media_ref01_ent.load(media_ref01_match_dt0, nil)
-    assert_nil err
+    media_ref01_data_dt0_loaded = media_ref01_ent.load(media_ref01_match_dt0, nil)
     assert !media_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def media_basic_setup(extra)
     "SPIDERMANMOVIES_TEST_MEDIA_ENTID" => idmap,
     "SPIDERMANMOVIES_TEST_LIVE" => "FALSE",
     "SPIDERMANMOVIES_TEST_EXPLAIN" => "FALSE",
-    "SPIDERMANMOVIES_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def media_basic_setup(extra)
   if env["SPIDERMANMOVIES_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["SPIDERMANMOVIES_APIKEY"],
       },
       extra || {},
     ])

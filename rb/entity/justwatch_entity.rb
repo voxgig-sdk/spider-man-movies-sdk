@@ -45,6 +45,7 @@ class JustwatchEntity
     end
   end
 
+  # @return [Justwatch, Hash] the current Justwatch data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class JustwatchEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Justwatch fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Justwatch.
+  #
+  # @param reqmatch [JustwatchLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Justwatch, Hash] the loaded Justwatch; raises SpiderManMoviesError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -245,21 +245,33 @@ func (sdk *SpiderManMoviesSDK) Direct(fetchargs map[string]any) (map[string]any,
 }
 
 
+// Justwatch returns a Justwatch entity bound to this client.
+// Idiomatic usage: client.Justwatch(nil).List(nil, nil) or
+// client.Justwatch(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SpiderManMoviesSDK) Justwatch(data map[string]any) SpiderManMoviesEntity {
 	return NewJustwatchEntityFunc(sdk, data)
 }
 
 
+// Media returns a Media entity bound to this client.
+// Idiomatic usage: client.Media(nil).List(nil, nil) or
+// client.Media(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SpiderManMoviesSDK) Media(data map[string]any) SpiderManMoviesEntity {
 	return NewMediaEntityFunc(sdk, data)
 }
 
 
+// Photo returns a Photo entity bound to this client.
+// Idiomatic usage: client.Photo(nil).List(nil, nil) or
+// client.Photo(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SpiderManMoviesSDK) Photo(data map[string]any) SpiderManMoviesEntity {
 	return NewPhotoEntityFunc(sdk, data)
 }
 
 
+// Search returns a Search entity bound to this client.
+// Idiomatic usage: client.Search(nil).List(nil, nil) or
+// client.Search(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SpiderManMoviesSDK) Search(data map[string]any) SpiderManMoviesEntity {
 	return NewSearchEntityFunc(sdk, data)
 }

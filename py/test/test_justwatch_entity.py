@@ -49,8 +49,7 @@ class TestJustwatchEntity:
         # LOAD
         justwatch_ref01_ent = client.Justwatch(None)
         justwatch_ref01_match_dt0 = {}
-        justwatch_ref01_data_dt0_loaded, err = justwatch_ref01_ent.load(justwatch_ref01_match_dt0, None)
-        assert err is None
+        justwatch_ref01_data_dt0_loaded = justwatch_ref01_ent.load(justwatch_ref01_match_dt0, None)
         assert justwatch_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _justwatch_basic_setup(extra):
         "SPIDERMANMOVIES_TEST_JUSTWATCH_ENTID": idmap,
         "SPIDERMANMOVIES_TEST_LIVE": "FALSE",
         "SPIDERMANMOVIES_TEST_EXPLAIN": "FALSE",
-        "SPIDERMANMOVIES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _justwatch_basic_setup(extra):
     if env.get("SPIDERMANMOVIES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SPIDERMANMOVIES_APIKEY"),
             },
             extra or {},
         ])

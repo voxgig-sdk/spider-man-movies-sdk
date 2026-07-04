@@ -1,7 +1,13 @@
 # SpiderManMovies SDK Justwatch entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from spidermanmovies_types import (
+    Justwatch,
+    JustwatchLoadMatch,
+)
 
 
 class JustwatchEntity:
@@ -44,7 +50,7 @@ class JustwatchEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Justwatch:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +59,12 @@ class JustwatchEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Justwatch:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: JustwatchLoadMatch, ctrl=None) -> Justwatch:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",

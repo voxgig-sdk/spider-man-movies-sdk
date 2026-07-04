@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -96,7 +95,7 @@ same parameters as `direct()`.
 ## JustwatchEntity
 
 ```lua
-local justwatch = client:Justwatch(nil)
+local justwatch = client:justwatch(nil)
 ```
 
 ### Operations
@@ -106,7 +105,7 @@ local justwatch = client:Justwatch(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Justwatch():load({ id = "justwatch_id" })
+local result, err = client:justwatch():load({ id = "justwatch_id" })
 ```
 
 ### Common Methods
@@ -142,7 +141,7 @@ Return the entity name.
 ## MediaEntity
 
 ```lua
-local media = client:Media(nil)
+local media = client:media(nil)
 ```
 
 ### Operations
@@ -152,7 +151,7 @@ local media = client:Media(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Media():load({ id = "media_id" })
+local result, err = client:media():load({ id = "media_id" })
 ```
 
 ### Common Methods
@@ -188,7 +187,7 @@ Return the entity name.
 ## PhotoEntity
 
 ```lua
-local photo = client:Photo(nil)
+local photo = client:photo(nil)
 ```
 
 ### Operations
@@ -198,7 +197,7 @@ local photo = client:Photo(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Photo():load({ id = "photo_id" })
+local result, err = client:photo():load({ id = "photo_id" })
 ```
 
 ### Common Methods
@@ -234,7 +233,7 @@ Return the entity name.
 ## SearchEntity
 
 ```lua
-local search = client:Search(nil)
+local search = client:search(nil)
 ```
 
 ### Operations
@@ -244,7 +243,7 @@ local search = client:Search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Search():load({ id = "search_id" })
+local result, err = client:search():load({ id = "search_id" })
 ```
 
 ### Common Methods

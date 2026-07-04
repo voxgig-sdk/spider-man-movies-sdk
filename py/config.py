@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://imdb.iamidiotareyoutoo.com",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -103,6 +100,7 @@ def make_config():
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -150,6 +148,7 @@ def make_config():
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [

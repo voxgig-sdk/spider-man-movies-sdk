@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch JustwatchLoadMatch
+---@param ctrl? table
+---@return Justwatch
+---@return string? err
 function JustwatchEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

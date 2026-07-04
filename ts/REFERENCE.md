@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -146,7 +145,7 @@ Alias for `SpiderManMoviesSDK.test()`.
 ## JustwatchEntity
 
 ```ts
-const justwatch = client.Justwatch()
+const justwatch = client.justwatch
 ```
 
 ### Operations
@@ -156,7 +155,7 @@ const justwatch = client.Justwatch()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Justwatch().load({ id: 'justwatch_id' })
+const result = await client.justwatch.load({ id: 'justwatch_id' })
 ```
 
 ### Common Methods
@@ -190,7 +189,7 @@ Return a copy of the entity options.
 ## MediaEntity
 
 ```ts
-const media = client.Media()
+const media = client.media
 ```
 
 ### Operations
@@ -200,7 +199,7 @@ const media = client.Media()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Media().load({ id: 'media_id' })
+const result = await client.media.load({ id: 'media_id' })
 ```
 
 ### Common Methods
@@ -234,7 +233,7 @@ Return a copy of the entity options.
 ## PhotoEntity
 
 ```ts
-const photo = client.Photo()
+const photo = client.photo
 ```
 
 ### Operations
@@ -244,7 +243,7 @@ const photo = client.Photo()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Photo().load({ id: 'photo_id' })
+const result = await client.photo.load({ id: 'photo_id' })
 ```
 
 ### Common Methods
@@ -278,7 +277,7 @@ Return a copy of the entity options.
 ## SearchEntity
 
 ```ts
-const search = client.Search()
+const search = client.search
 ```
 
 ### Operations
@@ -288,7 +287,7 @@ const search = client.Search()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Search().load({ id: 'search_id' })
+const result = await client.search.load({ id: 'search_id' })
 ```
 
 ### Common Methods

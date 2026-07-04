@@ -72,14 +72,12 @@ function media_direct_setup(mockres)
   local env = runner.env_override({
     ["SPIDERMANMOVIES_TEST_MEDIA_ENTID"] = {},
     ["SPIDERMANMOVIES_TEST_LIVE"] = "FALSE",
-    ["SPIDERMANMOVIES_APIKEY"] = "NONE",
   })
 
   local live = env["SPIDERMANMOVIES_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["SPIDERMANMOVIES_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

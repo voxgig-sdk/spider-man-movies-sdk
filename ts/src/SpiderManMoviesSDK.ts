@@ -5,6 +5,8 @@ import { MediaEntity } from './entity/MediaEntity'
 import { PhotoEntity } from './entity/PhotoEntity'
 import { SearchEntity } from './entity/SearchEntity'
 
+export type * from './SpiderManMoviesTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -205,24 +207,56 @@ class SpiderManMoviesSDK {
 
 
 
+  _justwatch?: JustwatchEntity
+
+  // Idiomatic facade: `client.justwatch.list()` / `client.justwatch.load({ id })`.
+  get justwatch(): JustwatchEntity {
+    return (this._justwatch ??= new JustwatchEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.justwatch` instead. */
   Justwatch(data?: any) {
     const self = this
     return new JustwatchEntity(self,data)
   }
 
 
+  _media?: MediaEntity
+
+  // Idiomatic facade: `client.media.list()` / `client.media.load({ id })`.
+  get media(): MediaEntity {
+    return (this._media ??= new MediaEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.media` instead. */
   Media(data?: any) {
     const self = this
     return new MediaEntity(self,data)
   }
 
 
+  _photo?: PhotoEntity
+
+  // Idiomatic facade: `client.photo.list()` / `client.photo.load({ id })`.
+  get photo(): PhotoEntity {
+    return (this._photo ??= new PhotoEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.photo` instead. */
   Photo(data?: any) {
     const self = this
     return new PhotoEntity(self,data)
   }
 
 
+  _search?: SearchEntity
+
+  // Idiomatic facade: `client.search.list()` / `client.search.load({ id })`.
+  get search(): SearchEntity {
+    return (this._search ??= new SearchEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.search` instead. */
   Search(data?: any) {
     const self = this
     return new SearchEntity(self,data)

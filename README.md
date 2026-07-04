@@ -10,26 +10,24 @@ This is an unofficial SDK for the Free Movie DB - The Free Movie Database public
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/spider-man-movies` | `npm install @voxgig-sdk/spider-man-movies` |
-| Python | `voxgig-sdk-spider-man-movies` | `pip install voxgig-sdk-spider-man-movies` |
-| PHP | `voxgig-sdk/spider-man-movies` | `composer require voxgig-sdk/spider-man-movies` |
-| Golang | `github.com/voxgig-sdk/spider-man-movies-sdk/go` | `go get github.com/voxgig-sdk/spider-man-movies-sdk/go` |
-| Ruby | `voxgig-sdk-spider-man-movies` | `gem install voxgig-sdk-spider-man-movies` |
-| Lua | `voxgig-sdk-spider-man-movies` | `luarocks install voxgig-sdk-spider-man-movies` |
+| TypeScript | `@voxgig-sdk/spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
+| Python | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
+| PHP | `voxgig-sdk/spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/spider-man-movies-sdk/go` | `go get github.com/voxgig-sdk/spider-man-movies-sdk/go@latest` |
+| Ruby | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
+| Lua | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { SpiderManMoviesSDK } from 'spider-man-movies'
+import { SpiderManMoviesSDK } from '@voxgig-sdk/spider-man-movies'
 
-const client = new SpiderManMoviesSDK({
-  apikey: process.env.SPIDER-MAN-MOVIES_APIKEY,
-})
+const client = new SpiderManMoviesSDK()
 
 // Load justwatch data
-const justwatch = await client.Justwatch().load({})
+const justwatch = await client.justwatch.load({})
 console.log(justwatch.data)
 ```
 
@@ -71,10 +69,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Justwatch** |  | `/justwatch` |
-| **Media** |  | `/media/{id}` |
-| **Photo** |  | `/photo/{id}` |
-| **Search** |  | `/search` |
+| **Justwatch** | The Justwatch entity (load). | `/justwatch` |
+| **Media** | The Media entity (load). | `/media/{id}` |
+| **Photo** | The Photo entity (load). | `/photo/{id}` |
+| **Search** | The Search entity (load). | `/search` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -84,16 +82,13 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from spidermanmovies_sdk import SpiderManMoviesSDK
 
-client = SpiderManMoviesSDK({
-    "apikey": os.environ.get("SPIDER-MAN-MOVIES_APIKEY"),
-})
+client = SpiderManMoviesSDK()
 
 
 # Load a specific justwatch
-justwatch, err = client.Justwatch().load({"id": "example_id"})
+justwatch = client.justwatch.load({"id": "example_id"})
 print(justwatch)
 ```
 
@@ -103,13 +98,11 @@ print(justwatch)
 <?php
 require_once 'spidermanmovies_sdk.php';
 
-$client = new SpiderManMoviesSDK([
-    "apikey" => getenv("SPIDER-MAN-MOVIES_APIKEY"),
-]);
+$client = new SpiderManMoviesSDK();
 
 
 // Load a specific justwatch
-[$justwatch, $err] = $client->Justwatch()->load(["id" => "example_id"]);
+$justwatch = $client->justwatch()->load(["id" => "example_id"]);
 print_r($justwatch);
 ```
 
@@ -118,9 +111,7 @@ print_r($justwatch);
 ```go
 import sdk "github.com/voxgig-sdk/spider-man-movies-sdk/go"
 
-client := sdk.NewSpiderManMoviesSDK(map[string]any{
-    "apikey": os.Getenv("SPIDER-MAN-MOVIES_APIKEY"),
-})
+client := sdk.New()
 
 // Load justwatch data
 justwatch, err := client.Justwatch(nil).Load(map[string]any{}, nil)
@@ -132,13 +123,11 @@ fmt.Println(justwatch)
 ```ruby
 require_relative "SpiderManMovies_sdk"
 
-client = SpiderManMoviesSDK.new({
-  "apikey" => ENV["SPIDER-MAN-MOVIES_APIKEY"],
-})
+client = SpiderManMoviesSDK.new
 
 
 # Load a specific justwatch
-justwatch, err = client.Justwatch().load({ "id" => "example_id" })
+justwatch = client.justwatch.load({ "id" => "example_id" })
 puts justwatch
 ```
 
@@ -147,13 +136,11 @@ puts justwatch
 ```lua
 local sdk = require("spider-man-movies_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("SPIDER-MAN-MOVIES_APIKEY"),
-})
+local client = sdk.new()
 
 
 -- Load a specific justwatch
-local justwatch, err = client:Justwatch():load({ id = "example_id" })
+local justwatch, err = client:justwatch():load({ id = "example_id" })
 print(justwatch)
 ```
 
@@ -166,7 +153,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = SpiderManMoviesSDK.test()
-const result = await client.Justwatch().load({ id: 'test01' })
+const result = await client.justwatch.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -174,14 +161,14 @@ const result = await client.Justwatch().load({ id: 'test01' })
 
 ```python
 client = SpiderManMoviesSDK.test()
-result, err = client.Justwatch().load({"id": "test01"})
+result = client.justwatch.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = SpiderManMoviesSDK::test();
-[$result, $err] = $client->Justwatch()->load(["id" => "test01"]);
+$result = $client->justwatch()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -197,14 +184,14 @@ result, err := client.Justwatch(nil).Load(
 
 ```ruby
 client = SpiderManMoviesSDK.test
-result, err = client.Justwatch().load({ "id" => "test01" })
+result = client.justwatch.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Justwatch():load({ id = "test01" })
+local result, err = client:justwatch():load({ id = "test01" })
 ```
 
 ## How it works
@@ -257,7 +244,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -266,7 +253,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -284,7 +271,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

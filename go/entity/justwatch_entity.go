@@ -85,6 +85,27 @@ func (e *JustwatchEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Justwatch; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *JustwatchEntity) DataTyped(data ...Justwatch) Justwatch {
+	if len(data) > 0 {
+		return typedFrom[Justwatch](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Justwatch](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Justwatch (all fields
+// optional at the wire level).
+func (e *JustwatchEntity) MatchTyped(match ...Justwatch) Justwatch {
+	if len(match) > 0 {
+		return typedFrom[Justwatch](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Justwatch](e.Match())
+}
+
 
 func (e *JustwatchEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *JustwatchEntity) Load(reqmatch map[string]any, ctrl map[string]any) (an
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// JustwatchLoadMatch and returns an Justwatch. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *JustwatchEntity) LoadTyped(reqmatch JustwatchLoadMatch, ctrl map[string]any) (Justwatch, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Justwatch{}, err
+	}
+	return typedFrom[Justwatch](res), nil
 }
 
 

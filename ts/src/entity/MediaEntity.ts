@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Media,
+  MediaLoadMatch,
+} from '../SpiderManMoviesTypes'
 
 // TODO: needs Entity superclass
-class MediaEntity extends SpiderManMoviesEntityBase {
+class MediaEntity extends SpiderManMoviesEntityBase<Media> {
 
   constructor(client: SpiderManMoviesSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class MediaEntity extends SpiderManMoviesEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: MediaLoadMatch, ctrl?: Control): Promise<Media> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class MediaEntity extends SpiderManMoviesEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Media> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

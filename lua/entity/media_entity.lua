@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch MediaLoadMatch
+---@param ctrl? table
+---@return Media
+---@return string? err
 function MediaEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

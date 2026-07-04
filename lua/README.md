@@ -9,12 +9,9 @@ The Lua SDK for the SpiderManMovies API — an entity-oriented client using Lua 
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-spider-man-movies
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("spider-man-movies_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("SPIDER-MAN-MOVIES_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 3. Load a justwatch
 
 ```lua
-local result, err = client:Justwatch():load({ id = "example_id" })
+local result, err = client:justwatch():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:SpiderManMovies():load({ id = "test01" })
+local result, err = client:justwatch():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-SPIDER-MAN-MOVIES_TEST_LIVE=TRUE
-SPIDER-MAN-MOVIES_APIKEY=<your-key>
+SPIDER_MAN_MOVIES_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -250,7 +243,7 @@ API path: `/search`
 
 ### Justwatch
 
-Create an instance: `const justwatch = client.Justwatch()`
+Create an instance: `const justwatch = client.justwatch`
 
 #### Operations
 
@@ -261,13 +254,13 @@ Create an instance: `const justwatch = client.Justwatch()`
 #### Example: Load
 
 ```ts
-const justwatch = await client.Justwatch().load({ id: 'justwatch_id' })
+const justwatch = await client.justwatch.load({ id: 'justwatch_id' })
 ```
 
 
 ### Media
 
-Create an instance: `const media = client.Media()`
+Create an instance: `const media = client.media`
 
 #### Operations
 
@@ -278,13 +271,13 @@ Create an instance: `const media = client.Media()`
 #### Example: Load
 
 ```ts
-const media = await client.Media().load({ id: 'media_id' })
+const media = await client.media.load({ id: 'media_id' })
 ```
 
 
 ### Photo
 
-Create an instance: `const photo = client.Photo()`
+Create an instance: `const photo = client.photo`
 
 #### Operations
 
@@ -295,13 +288,13 @@ Create an instance: `const photo = client.Photo()`
 #### Example: Load
 
 ```ts
-const photo = await client.Photo().load({ id: 'photo_id' })
+const photo = await client.photo.load({ id: 'photo_id' })
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -312,7 +305,7 @@ Create an instance: `const search = client.Search()`
 #### Example: Load
 
 ```ts
-const search = await client.Search().load({ id: 'search_id' })
+const search = await client.search.load({ id: 'search_id' })
 ```
 
 
@@ -387,11 +380,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local justwatch = client:justwatch()
+justwatch:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- justwatch:data_get() now returns the loaded justwatch data
+-- justwatch:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

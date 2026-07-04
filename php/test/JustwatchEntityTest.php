@@ -49,8 +49,7 @@ class JustwatchEntityTest extends TestCase
         // LOAD
         $justwatch_ref01_ent = $client->Justwatch(null);
         $justwatch_ref01_match_dt0 = [];
-        [$justwatch_ref01_data_dt0_loaded, $err] = $justwatch_ref01_ent->load($justwatch_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $justwatch_ref01_data_dt0_loaded = $justwatch_ref01_ent->load($justwatch_ref01_match_dt0, null);
         $this->assertNotNull($justwatch_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function justwatch_basic_setup($extra)
         "SPIDERMANMOVIES_TEST_JUSTWATCH_ENTID" => $idmap,
         "SPIDERMANMOVIES_TEST_LIVE" => "FALSE",
         "SPIDERMANMOVIES_TEST_EXPLAIN" => "FALSE",
-        "SPIDERMANMOVIES_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function justwatch_basic_setup($extra)
     if ($env["SPIDERMANMOVIES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SPIDERMANMOVIES_APIKEY"],
             ],
             $extra ?? [],
         ]);
