@@ -30,11 +30,14 @@ const client = new SpiderManMoviesSDK()
 
 ### 3. Load a justwatch
 
-```ts
-const result = await client.justwatch.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const justwatch = await client.Justwatch().load({ id: 'example_id' })
+  console.log(justwatch)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -52,6 +55,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -80,9 +86,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = SpiderManMoviesSDK.test()
 
-const result = await client.justwatch.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const justwatch = await client.Justwatch().load({ id: 'test01' })
+// justwatch is a bare entity populated with mock response data
+console.log(justwatch)
 ```
 
 You can also use the instance method:
@@ -97,7 +103,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.justwatch
+const entity = client.Justwatch()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -195,29 +201,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): SpiderManMoviesSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -292,7 +299,7 @@ API path: `/search`
 
 ### Justwatch
 
-Create an instance: `const justwatch = client.justwatch`
+Create an instance: `const justwatch = client.Justwatch()`
 
 #### Operations
 
@@ -303,13 +310,13 @@ Create an instance: `const justwatch = client.justwatch`
 #### Example: Load
 
 ```ts
-const justwatch = await client.justwatch.load({ id: 'justwatch_id' })
+const justwatch = await client.Justwatch().load({ id: 'justwatch_id' })
 ```
 
 
 ### Media
 
-Create an instance: `const media = client.media`
+Create an instance: `const media = client.Media()`
 
 #### Operations
 
@@ -320,13 +327,13 @@ Create an instance: `const media = client.media`
 #### Example: Load
 
 ```ts
-const media = await client.media.load({ id: 'media_id' })
+const media = await client.Media().load({ id: 'media_id' })
 ```
 
 
 ### Photo
 
-Create an instance: `const photo = client.photo`
+Create an instance: `const photo = client.Photo()`
 
 #### Operations
 
@@ -337,13 +344,13 @@ Create an instance: `const photo = client.photo`
 #### Example: Load
 
 ```ts
-const photo = await client.photo.load({ id: 'photo_id' })
+const photo = await client.Photo().load({ id: 'photo_id' })
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `const search = client.Search()`
 
 #### Operations
 
@@ -354,7 +361,7 @@ Create an instance: `const search = client.search`
 #### Example: Load
 
 ```ts
-const search = await client.search.load({ id: 'search_id' })
+const search = await client.Search().load({ id: 'search_id' })
 ```
 
 
@@ -425,7 +432,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const justwatch = client.justwatch
+const justwatch = client.Justwatch()
 await justwatch.load({ id: "example_id" })
 
 // justwatch.data() now returns the loaded justwatch data

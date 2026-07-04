@@ -97,7 +97,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## JustwatchEntity
 
 ```php
-$justwatch = $client->justwatch();
+$justwatch = $client->Justwatch();
 ```
 
 ### Operations
@@ -107,7 +107,7 @@ $justwatch = $client->justwatch();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->justwatch()->load(["id" => "justwatch_id"]);
+$result = $client->Justwatch()->load(["id" => "justwatch_id"]);
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## MediaEntity
 
 ```php
-$media = $client->media();
+$media = $client->Media();
 ```
 
 ### Operations
@@ -153,7 +153,7 @@ $media = $client->media();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->media()->load(["id" => "media_id"]);
+$result = $client->Media()->load(["id" => "media_id"]);
 ```
 
 ### Common Methods
@@ -189,7 +189,7 @@ Return the entity name.
 ## PhotoEntity
 
 ```php
-$photo = $client->photo();
+$photo = $client->Photo();
 ```
 
 ### Operations
@@ -199,7 +199,7 @@ $photo = $client->photo();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->photo()->load(["id" => "photo_id"]);
+$result = $client->Photo()->load(["id" => "photo_id"]);
 ```
 
 ### Common Methods
@@ -235,7 +235,7 @@ Return the entity name.
 ## SearchEntity
 
 ```php
-$search = $client->search();
+$search = $client->Search();
 ```
 
 ### Operations
@@ -245,7 +245,7 @@ $search = $client->search();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->search()->load(["id" => "search_id"]);
+$result = $client->Search()->load(["id" => "search_id"]);
 ```
 
 ### Common Methods

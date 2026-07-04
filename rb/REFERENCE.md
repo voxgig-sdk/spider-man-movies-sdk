@@ -98,7 +98,7 @@ same parameters as `direct()`. Raises on error.
 ## JustwatchEntity
 
 ```ruby
-justwatch = client.justwatch
+justwatch = client.Justwatch
 ```
 
 ### Operations
@@ -108,7 +108,7 @@ justwatch = client.justwatch
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.justwatch.load({ "id" => "justwatch_id" })
+result = client.Justwatch.load({ "id" => "justwatch_id" })
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ Return the entity name.
 ## MediaEntity
 
 ```ruby
-media = client.media
+media = client.Media
 ```
 
 ### Operations
@@ -154,7 +154,7 @@ media = client.media
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.media.load({ "id" => "media_id" })
+result = client.Media.load({ "id" => "media_id" })
 ```
 
 ### Common Methods
@@ -190,7 +190,7 @@ Return the entity name.
 ## PhotoEntity
 
 ```ruby
-photo = client.photo
+photo = client.Photo
 ```
 
 ### Operations
@@ -200,7 +200,7 @@ photo = client.photo
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.photo.load({ "id" => "photo_id" })
+result = client.Photo.load({ "id" => "photo_id" })
 ```
 
 ### Common Methods
@@ -236,7 +236,7 @@ Return the entity name.
 ## SearchEntity
 
 ```ruby
-search = client.search
+search = client.Search
 ```
 
 ### Operations
@@ -246,7 +246,7 @@ search = client.search
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.search.load({ "id" => "search_id" })
+result = client.Search.load({ "id" => "search_id" })
 ```
 
 ### Common Methods

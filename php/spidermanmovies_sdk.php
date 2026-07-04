@@ -233,10 +233,10 @@ class SpiderManMoviesSDK
 
     private $_justwatch = null;
 
-    // Idiomatic facade: $client->justwatch()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Justwatch() (PHP method
-    // names are case-insensitive).
-    public function justwatch($data = null)
+    // Canonical facade: $client->Justwatch()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->justwatch()
+    // resolves here too.
+    public function Justwatch($data = null)
     {
         require_once __DIR__ . '/entity/justwatch_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class SpiderManMoviesSDK
 
     private $_media = null;
 
-    // Idiomatic facade: $client->media()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Media() (PHP method
-    // names are case-insensitive).
-    public function media($data = null)
+    // Canonical facade: $client->Media()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->media()
+    // resolves here too.
+    public function Media($data = null)
     {
         require_once __DIR__ . '/entity/media_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class SpiderManMoviesSDK
 
     private $_photo = null;
 
-    // Idiomatic facade: $client->photo()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Photo() (PHP method
-    // names are case-insensitive).
-    public function photo($data = null)
+    // Canonical facade: $client->Photo()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->photo()
+    // resolves here too.
+    public function Photo($data = null)
     {
         require_once __DIR__ . '/entity/photo_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class SpiderManMoviesSDK
 
     private $_search = null;
 
-    // Idiomatic facade: $client->search()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Search() (PHP method
-    // names are case-insensitive).
-    public function search($data = null)
+    // Canonical facade: $client->Search()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->search()
+    // resolves here too.
+    public function Search($data = null)
     {
         require_once __DIR__ . '/entity/search_entity.php';
         if ($data === null) {

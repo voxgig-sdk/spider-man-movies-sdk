@@ -33,9 +33,10 @@ $client = new SpiderManMoviesSDK();
 
 ```php
 try {
-    $result = $client->justwatch()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Justwatch record (throws on error).
+    $justwatch = $client->Justwatch()->load(["id" => "example_id"]);
+    print_r($justwatch);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = SpiderManMoviesSDK::test();
+$client = SpiderManMoviesSDK::test([
+    "entity" => ["justwatch" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->justwatch()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$justwatch = $client->Justwatch()->load(["id" => "test01"]);
+print_r($justwatch);
 ```
 
 ### Use a custom fetch function
@@ -252,7 +257,7 @@ API path: `/search`
 
 ### Justwatch
 
-Create an instance: `const justwatch = client.justwatch`
+Create an instance: `$justwatch = $client->Justwatch();`
 
 #### Operations
 
@@ -262,14 +267,15 @@ Create an instance: `const justwatch = client.justwatch`
 
 #### Example: Load
 
-```ts
-const justwatch = await client.justwatch.load({ id: 'justwatch_id' })
+```php
+// load() returns the bare Justwatch record (throws on error).
+$justwatch = $client->Justwatch()->load(["id" => "justwatch_id"]);
 ```
 
 
 ### Media
 
-Create an instance: `const media = client.media`
+Create an instance: `$media = $client->Media();`
 
 #### Operations
 
@@ -279,14 +285,15 @@ Create an instance: `const media = client.media`
 
 #### Example: Load
 
-```ts
-const media = await client.media.load({ id: 'media_id' })
+```php
+// load() returns the bare Media record (throws on error).
+$media = $client->Media()->load(["id" => "media_id"]);
 ```
 
 
 ### Photo
 
-Create an instance: `const photo = client.photo`
+Create an instance: `$photo = $client->Photo();`
 
 #### Operations
 
@@ -296,14 +303,15 @@ Create an instance: `const photo = client.photo`
 
 #### Example: Load
 
-```ts
-const photo = await client.photo.load({ id: 'photo_id' })
+```php
+// load() returns the bare Photo record (throws on error).
+$photo = $client->Photo()->load(["id" => "photo_id"]);
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `$search = $client->Search();`
 
 #### Operations
 
@@ -313,8 +321,9 @@ Create an instance: `const search = client.search`
 
 #### Example: Load
 
-```ts
-const search = await client.search.load({ id: 'search_id' })
+```php
+// load() returns the bare Search record (throws on error).
+$search = $client->Search()->load(["id" => "search_id"]);
 ```
 
 
@@ -389,7 +398,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$justwatch = $client->justwatch();
+$justwatch = $client->Justwatch();
 $justwatch->load(["id" => "example_id"]);
 
 // $justwatch->dataGet() now returns the loaded justwatch data

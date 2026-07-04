@@ -33,10 +33,12 @@ client = SpiderManMoviesSDK()
 
 ### 3. Load a justwatch
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.justwatch.load({"id": "example_id"})
-    print(result)
+    justwatch = client.Justwatch().load({"id": "example_id"})
+    print(justwatch)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = SpiderManMoviesSDK.test()
 
-result = client.justwatch.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+justwatch = client.Justwatch().load({"id": "test01"})
+# justwatch contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -247,7 +250,7 @@ API path: `/search`
 
 ### Justwatch
 
-Create an instance: `const justwatch = client.justwatch`
+Create an instance: `justwatch = client.Justwatch()`
 
 #### Operations
 
@@ -257,14 +260,14 @@ Create an instance: `const justwatch = client.justwatch`
 
 #### Example: Load
 
-```ts
-const justwatch = await client.justwatch.load({ id: 'justwatch_id' })
+```python
+justwatch = client.Justwatch().load({"id": "justwatch_id"})
 ```
 
 
 ### Media
 
-Create an instance: `const media = client.media`
+Create an instance: `media = client.Media()`
 
 #### Operations
 
@@ -274,14 +277,14 @@ Create an instance: `const media = client.media`
 
 #### Example: Load
 
-```ts
-const media = await client.media.load({ id: 'media_id' })
+```python
+media = client.Media().load({"id": "media_id"})
 ```
 
 
 ### Photo
 
-Create an instance: `const photo = client.photo`
+Create an instance: `photo = client.Photo()`
 
 #### Operations
 
@@ -291,14 +294,14 @@ Create an instance: `const photo = client.photo`
 
 #### Example: Load
 
-```ts
-const photo = await client.photo.load({ id: 'photo_id' })
+```python
+photo = client.Photo().load({"id": "photo_id"})
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `search = client.Search()`
 
 #### Operations
 
@@ -308,8 +311,8 @@ Create an instance: `const search = client.search`
 
 #### Example: Load
 
-```ts
-const search = await client.search.load({ id: 'search_id' })
+```python
+search = client.Search().load({"id": "search_id"})
 ```
 
 
@@ -383,7 +386,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-justwatch = client.justwatch
+justwatch = client.Justwatch()
 justwatch.load({"id": "example_id"})
 
 # justwatch.data_get() now returns the loaded justwatch data

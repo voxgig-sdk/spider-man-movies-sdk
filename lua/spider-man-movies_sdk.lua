@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:justwatch():list() / client:justwatch():load({ id = ... })
-function SpiderManMoviesSDK:justwatch(data)
+-- Idiomatic facade: client:Justwatch():list() / client:Justwatch():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SpiderManMoviesSDK:Justwatch(data)
   local EntityMod = require("entity.justwatch_entity")
   if data == nil then
     if self._justwatch == nil then
@@ -256,15 +257,10 @@ function SpiderManMoviesSDK:justwatch(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:justwatch() instead.
-function SpiderManMoviesSDK:Justwatch(data)
-  local EntityMod = require("entity.justwatch_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:media():list() / client:media():load({ id = ... })
-function SpiderManMoviesSDK:media(data)
+-- Idiomatic facade: client:Media():list() / client:Media():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SpiderManMoviesSDK:Media(data)
   local EntityMod = require("entity.media_entity")
   if data == nil then
     if self._media == nil then
@@ -275,15 +271,10 @@ function SpiderManMoviesSDK:media(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:media() instead.
-function SpiderManMoviesSDK:Media(data)
-  local EntityMod = require("entity.media_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:photo():list() / client:photo():load({ id = ... })
-function SpiderManMoviesSDK:photo(data)
+-- Idiomatic facade: client:Photo():list() / client:Photo():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SpiderManMoviesSDK:Photo(data)
   local EntityMod = require("entity.photo_entity")
   if data == nil then
     if self._photo == nil then
@@ -294,15 +285,10 @@ function SpiderManMoviesSDK:photo(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:photo() instead.
-function SpiderManMoviesSDK:Photo(data)
-  local EntityMod = require("entity.photo_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
-function SpiderManMoviesSDK:search(data)
+-- Idiomatic facade: client:Search():list() / client:Search():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SpiderManMoviesSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   if data == nil then
     if self._search == nil then
@@ -310,12 +296,6 @@ function SpiderManMoviesSDK:search(data)
     end
     return self._search
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:search() instead.
-function SpiderManMoviesSDK:Search(data)
-  local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)
 end
 

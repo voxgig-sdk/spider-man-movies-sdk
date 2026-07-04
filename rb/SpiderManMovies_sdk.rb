@@ -208,52 +208,28 @@ class SpiderManMoviesSDK
   end
 
 
-  # Idiomatic facade: client.justwatch.list / client.justwatch.load({ "id" => ... })
-  def justwatch
-    require_relative 'entity/justwatch_entity'
-    @justwatch ||= JustwatchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.justwatch instead.
+  # Canonical facade: client.Justwatch.list / client.Justwatch.load({ "id" => ... })
   def Justwatch(data = nil)
     require_relative 'entity/justwatch_entity'
     JustwatchEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.media.list / client.media.load({ "id" => ... })
-  def media
-    require_relative 'entity/media_entity'
-    @media ||= MediaEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.media instead.
+  # Canonical facade: client.Media.list / client.Media.load({ "id" => ... })
   def Media(data = nil)
     require_relative 'entity/media_entity'
     MediaEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.photo.list / client.photo.load({ "id" => ... })
-  def photo
-    require_relative 'entity/photo_entity'
-    @photo ||= PhotoEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.photo instead.
+  # Canonical facade: client.Photo.list / client.Photo.load({ "id" => ... })
   def Photo(data = nil)
     require_relative 'entity/photo_entity'
     PhotoEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.search.list / client.search.load({ "id" => ... })
-  def search
-    require_relative 'entity/search_entity'
-    @search ||= SearchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.search instead.
+  # Canonical facade: client.Search.list / client.Search.load({ "id" => ... })
   def Search(data = nil)
     require_relative 'entity/search_entity'
     SearchEntity.new(self, data)

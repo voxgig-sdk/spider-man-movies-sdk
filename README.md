@@ -26,9 +26,9 @@ import { SpiderManMoviesSDK } from '@voxgig-sdk/spider-man-movies'
 
 const client = new SpiderManMoviesSDK()
 
-// Load justwatch data
-const justwatch = await client.justwatch.load({})
-console.log(justwatch.data)
+// Load justwatch data (returns a Justwatch)
+const justwatch = await client.Justwatch().load()
+console.log(justwatch)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -87,8 +87,8 @@ from spidermanmovies_sdk import SpiderManMoviesSDK
 client = SpiderManMoviesSDK()
 
 
-# Load a specific justwatch
-justwatch = client.justwatch.load({"id": "example_id"})
+# Load a specific justwatch (returns the record, raises on error)
+justwatch = client.Justwatch().load({"id": "example_id"})
 print(justwatch)
 ```
 
@@ -101,8 +101,8 @@ require_once 'spidermanmovies_sdk.php';
 $client = new SpiderManMoviesSDK();
 
 
-// Load a specific justwatch
-$justwatch = $client->justwatch()->load(["id" => "example_id"]);
+// Load a specific justwatch (returns the bare record; throws on error)
+$justwatch = $client->Justwatch()->load(["id" => "example_id"]);
 print_r($justwatch);
 ```
 
@@ -126,8 +126,8 @@ require_relative "SpiderManMovies_sdk"
 client = SpiderManMoviesSDK.new
 
 
-# Load a specific justwatch
-justwatch = client.justwatch.load({ "id" => "example_id" })
+# Load a specific justwatch (returns the bare record; raises on error)
+justwatch = client.Justwatch.load({ "id" => "example_id" })
 puts justwatch
 ```
 
@@ -140,7 +140,7 @@ local client = sdk.new()
 
 
 -- Load a specific justwatch
-local justwatch, err = client:justwatch():load({ id = "example_id" })
+local justwatch, err = client:Justwatch():load({ id = "example_id" })
 print(justwatch)
 ```
 
@@ -153,22 +153,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = SpiderManMoviesSDK.test()
-const result = await client.justwatch.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const justwatch = await client.Justwatch().load({ id: 'test01' })
+// justwatch is a bare Justwatch populated with mock data
+console.log(justwatch)
 ```
 
 ### Python
 
 ```python
 client = SpiderManMoviesSDK.test()
-result = client.justwatch.load({"id": "test01"})
+justwatch = client.Justwatch().load({"id": "test01"})
+print(justwatch)
 ```
 
 ### PHP
 
 ```php
-$client = SpiderManMoviesSDK::test();
-$result = $client->justwatch()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = SpiderManMoviesSDK::test([
+    "entity" => ["justwatch" => ["test01" => ["id" => "test01"]]],
+]);
+$justwatch = $client->Justwatch()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -183,15 +188,18 @@ result, err := client.Justwatch(nil).Load(
 ### Ruby
 
 ```ruby
-client = SpiderManMoviesSDK.test
-result = client.justwatch.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = SpiderManMoviesSDK.test({
+  "entity" => { "justwatch" => { "test01" => { "id" => "test01" } } },
+})
+justwatch = client.Justwatch.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:justwatch():load({ id = "test01" })
+local result, err = client:Justwatch():load({ id = "test01" })
 ```
 
 ## How it works
@@ -239,6 +247,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

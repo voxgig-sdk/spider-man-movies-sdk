@@ -207,56 +207,28 @@ class SpiderManMoviesSDK {
 
 
 
-  _justwatch?: JustwatchEntity
-
-  // Idiomatic facade: `client.justwatch.list()` / `client.justwatch.load({ id })`.
-  get justwatch(): JustwatchEntity {
-    return (this._justwatch ??= new JustwatchEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.justwatch` instead. */
+  // Entity access: `client.Justwatch().list()` / `client.Justwatch().load({ id })`.
   Justwatch(data?: any) {
     const self = this
     return new JustwatchEntity(self,data)
   }
 
 
-  _media?: MediaEntity
-
-  // Idiomatic facade: `client.media.list()` / `client.media.load({ id })`.
-  get media(): MediaEntity {
-    return (this._media ??= new MediaEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.media` instead. */
+  // Entity access: `client.Media().list()` / `client.Media().load({ id })`.
   Media(data?: any) {
     const self = this
     return new MediaEntity(self,data)
   }
 
 
-  _photo?: PhotoEntity
-
-  // Idiomatic facade: `client.photo.list()` / `client.photo.load({ id })`.
-  get photo(): PhotoEntity {
-    return (this._photo ??= new PhotoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.photo` instead. */
+  // Entity access: `client.Photo().list()` / `client.Photo().load({ id })`.
   Photo(data?: any) {
     const self = this
     return new PhotoEntity(self,data)
   }
 
 
-  _search?: SearchEntity
-
-  // Idiomatic facade: `client.search.list()` / `client.search.load({ id })`.
-  get search(): SearchEntity {
-    return (this._search ??= new SearchEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.search` instead. */
+  // Entity access: `client.Search().list()` / `client.Search().load({ id })`.
   Search(data?: any) {
     const self = this
     return new SearchEntity(self,data)

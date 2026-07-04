@@ -220,73 +220,33 @@ class SpiderManMoviesSDK:
         }
 
 
-    @property
-    def justwatch(self):
-        """Idiomatic facade: client.justwatch.list() / client.justwatch.load({"id": ...})."""
-        from entity.justwatch_entity import JustwatchEntity
-        cached = getattr(self, "_justwatch", None)
-        if cached is None:
-            cached = JustwatchEntity(self, None)
-            self._justwatch = cached
-        return cached
-
-    def Justwatch(self, data=None):
-        # Deprecated: use client.justwatch instead.
+    def Justwatch(self, data=None) -> "JustwatchEntity":
+        """Entity factory: client.Justwatch().list({}) / client.Justwatch().load({"id": ...})."""
         from entity.justwatch_entity import JustwatchEntity
         return JustwatchEntity(self, data)
 
 
-    @property
-    def media(self):
-        """Idiomatic facade: client.media.list() / client.media.load({"id": ...})."""
-        from entity.media_entity import MediaEntity
-        cached = getattr(self, "_media", None)
-        if cached is None:
-            cached = MediaEntity(self, None)
-            self._media = cached
-        return cached
-
-    def Media(self, data=None):
-        # Deprecated: use client.media instead.
+    def Media(self, data=None) -> "MediaEntity":
+        """Entity factory: client.Media().list({}) / client.Media().load({"id": ...})."""
         from entity.media_entity import MediaEntity
         return MediaEntity(self, data)
 
 
-    @property
-    def photo(self):
-        """Idiomatic facade: client.photo.list() / client.photo.load({"id": ...})."""
-        from entity.photo_entity import PhotoEntity
-        cached = getattr(self, "_photo", None)
-        if cached is None:
-            cached = PhotoEntity(self, None)
-            self._photo = cached
-        return cached
-
-    def Photo(self, data=None):
-        # Deprecated: use client.photo instead.
+    def Photo(self, data=None) -> "PhotoEntity":
+        """Entity factory: client.Photo().list({}) / client.Photo().load({"id": ...})."""
         from entity.photo_entity import PhotoEntity
         return PhotoEntity(self, data)
 
 
-    @property
-    def search(self):
-        """Idiomatic facade: client.search.list() / client.search.load({"id": ...})."""
-        from entity.search_entity import SearchEntity
-        cached = getattr(self, "_search", None)
-        if cached is None:
-            cached = SearchEntity(self, None)
-            self._search = cached
-        return cached
-
-    def Search(self, data=None):
-        # Deprecated: use client.search instead.
+    def Search(self, data=None) -> "SearchEntity":
+        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "SpiderManMoviesSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -306,3 +266,12 @@ class SpiderManMoviesSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.justwatch_entity import JustwatchEntity
+    from entity.media_entity import MediaEntity
+    from entity.photo_entity import PhotoEntity
+    from entity.search_entity import SearchEntity

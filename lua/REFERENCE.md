@@ -95,7 +95,7 @@ same parameters as `direct()`.
 ## JustwatchEntity
 
 ```lua
-local justwatch = client:justwatch(nil)
+local justwatch = client:Justwatch(nil)
 ```
 
 ### Operations
@@ -105,7 +105,7 @@ local justwatch = client:justwatch(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:justwatch():load({ id = "justwatch_id" })
+local result, err = client:Justwatch():load({ id = "justwatch_id" })
 ```
 
 ### Common Methods
@@ -141,7 +141,7 @@ Return the entity name.
 ## MediaEntity
 
 ```lua
-local media = client:media(nil)
+local media = client:Media(nil)
 ```
 
 ### Operations
@@ -151,7 +151,7 @@ local media = client:media(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:media():load({ id = "media_id" })
+local result, err = client:Media():load({ id = "media_id" })
 ```
 
 ### Common Methods
@@ -187,7 +187,7 @@ Return the entity name.
 ## PhotoEntity
 
 ```lua
-local photo = client:photo(nil)
+local photo = client:Photo(nil)
 ```
 
 ### Operations
@@ -197,7 +197,7 @@ local photo = client:photo(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:photo():load({ id = "photo_id" })
+local result, err = client:Photo():load({ id = "photo_id" })
 ```
 
 ### Common Methods
@@ -233,7 +233,7 @@ Return the entity name.
 ## SearchEntity
 
 ```lua
-local search = client:search(nil)
+local search = client:Search(nil)
 ```
 
 ### Operations
@@ -243,7 +243,7 @@ local search = client:search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:search():load({ id = "search_id" })
+local result, err = client:Search():load({ id = "search_id" })
 ```
 
 ### Common Methods

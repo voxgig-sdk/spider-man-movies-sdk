@@ -145,7 +145,7 @@ Alias for `SpiderManMoviesSDK.test()`.
 ## JustwatchEntity
 
 ```ts
-const justwatch = client.justwatch
+const justwatch = client.Justwatch()
 ```
 
 ### Operations
@@ -155,7 +155,7 @@ const justwatch = client.justwatch
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.justwatch.load({ id: 'justwatch_id' })
+const result = await client.Justwatch().load({ id: 'justwatch_id' })
 ```
 
 ### Common Methods
@@ -189,7 +189,7 @@ Return a copy of the entity options.
 ## MediaEntity
 
 ```ts
-const media = client.media
+const media = client.Media()
 ```
 
 ### Operations
@@ -199,7 +199,7 @@ const media = client.media
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.media.load({ id: 'media_id' })
+const result = await client.Media().load({ id: 'media_id' })
 ```
 
 ### Common Methods
@@ -233,7 +233,7 @@ Return a copy of the entity options.
 ## PhotoEntity
 
 ```ts
-const photo = client.photo
+const photo = client.Photo()
 ```
 
 ### Operations
@@ -243,7 +243,7 @@ const photo = client.photo
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.photo.load({ id: 'photo_id' })
+const result = await client.Photo().load({ id: 'photo_id' })
 ```
 
 ### Common Methods
@@ -277,7 +277,7 @@ Return a copy of the entity options.
 ## SearchEntity
 
 ```ts
-const search = client.search
+const search = client.Search()
 ```
 
 ### Operations
@@ -287,7 +287,7 @@ const search = client.search
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.search.load({ id: 'search_id' })
+const result = await client.Search().load({ id: 'search_id' })
 ```
 
 ### Common Methods
