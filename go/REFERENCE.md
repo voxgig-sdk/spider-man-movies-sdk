@@ -112,7 +112,7 @@ justwatch := client.Justwatch(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Justwatch(nil).Load(map[string]any{"id": "justwatch_id"}, nil)
+result, err := client.Justwatch(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -232,7 +232,7 @@ search := client.Search(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Search(nil).Load(map[string]any{"id": "search_id"}, nil)
+result, err := client.Search(nil).Load(nil, nil)
 ```
 
 ### Common Methods

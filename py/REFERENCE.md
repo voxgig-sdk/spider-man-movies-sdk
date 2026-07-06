@@ -8,7 +8,7 @@ Complete API reference for the SpiderManMovies Python SDK.
 ### Constructor
 
 ```python
-from spider-man-movies_sdk import SpiderManMoviesSDK
+from spidermanmovies_sdk import SpiderManMoviesSDK
 
 client = SpiderManMoviesSDK(options)
 ```
@@ -102,7 +102,7 @@ justwatch = client.Justwatch()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Justwatch().load({"id": "justwatch_id"})
+result = client.Justwatch().load()
 ```
 
 ### Common Methods
@@ -237,7 +237,7 @@ search = client.Search()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Search().load({"id": "search_id"})
+result = client.Search().load()
 ```
 
 ### Common Methods

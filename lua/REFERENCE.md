@@ -105,7 +105,7 @@ local justwatch = client:Justwatch(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Justwatch():load({ id = "justwatch_id" })
+local result, err = client:Justwatch():load()
 ```
 
 ### Common Methods
@@ -243,7 +243,7 @@ local search = client:Search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Search():load({ id = "search_id" })
+local result, err = client:Search():load()
 ```
 
 ### Common Methods

@@ -6,6 +6,21 @@ This is an unofficial SDK for the Free Movie DB - The Free Movie Database public
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
+## Entities, not endpoints
+
+This SDK exposes the API as a small set of **semantic entities** — Justwatch, Media, Photo and Search — that you
+call directly, instead of assembling URL paths and query strings. Entities are
+**Capitalised** to mark them as the primary surface, each with the operations they
+support (`load`):
+
+```ts
+const client = new SpiderManMoviesSDK()
+const justwatch = await client.Justwatch().load()
+```
+
+Thinking in entities keeps the mental model small — for people and AI agents alike —
+rather than reasoning about raw HTTP routes and query parameters.
+
 ## Packages
 
 | Language | Package | Install |
@@ -74,8 +89,8 @@ The API exposes 4 entities:
 | **Photo** | The Photo entity (load). | `/photo/{id}` |
 | **Search** | The Search entity (load). | `/search` |
 
-Each entity supports the following operations where available: **load**,
-**list**, **create**, **update**, and **remove**.
+The operations available across these entities are **load** — see each entity's
+own list above for exactly which it supports.
 
 ## Quickstart in other languages
 
@@ -88,7 +103,7 @@ client = SpiderManMoviesSDK()
 
 
 # Load a specific justwatch (returns the record, raises on error)
-justwatch = client.Justwatch().load({"id": "example_id"})
+justwatch = client.Justwatch().load()
 print(justwatch)
 ```
 
@@ -102,7 +117,7 @@ $client = new SpiderManMoviesSDK();
 
 
 // Load a specific justwatch (returns the bare record; throws on error)
-$justwatch = $client->Justwatch()->load(["id" => "example_id"]);
+$justwatch = $client->Justwatch()->load();
 print_r($justwatch);
 ```
 
@@ -127,7 +142,7 @@ client = SpiderManMoviesSDK.new
 
 
 # Load a specific justwatch (returns the bare record; raises on error)
-justwatch = client.Justwatch.load({ "id" => "example_id" })
+justwatch = client.Justwatch.load()
 puts justwatch
 ```
 
@@ -140,7 +155,7 @@ local client = sdk.new()
 
 
 -- Load a specific justwatch
-local justwatch, err = client:Justwatch():load({ id = "example_id" })
+local justwatch, err = client:Justwatch():load()
 print(justwatch)
 ```
 
@@ -153,7 +168,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = SpiderManMoviesSDK.test()
-const justwatch = await client.Justwatch().load({ id: 'test01' })
+const justwatch = await client.Justwatch().load()
 // justwatch is a bare Justwatch populated with mock data
 console.log(justwatch)
 ```
@@ -162,7 +177,7 @@ console.log(justwatch)
 
 ```python
 client = SpiderManMoviesSDK.test()
-justwatch = client.Justwatch().load({"id": "test01"})
+justwatch = client.Justwatch().load()
 print(justwatch)
 ```
 
@@ -171,9 +186,9 @@ print(justwatch)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = SpiderManMoviesSDK::test([
-    "entity" => ["justwatch" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["justwatch" => ["test01" => []]],
 ]);
-$justwatch = $client->Justwatch()->load(["id" => "test01"]);
+$justwatch = $client->Justwatch()->load();
 ```
 
 ### Golang
@@ -181,7 +196,7 @@ $justwatch = $client->Justwatch()->load(["id" => "test01"]);
 ```go
 client := sdk.Test()
 result, err := client.Justwatch(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+    nil, nil,
 )
 ```
 
@@ -190,41 +205,19 @@ result, err := client.Justwatch(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = SpiderManMoviesSDK.test({
-  "entity" => { "justwatch" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "justwatch" => { "test01" => {} } },
 })
-justwatch = client.Justwatch.load({ "id" => "test01" })
+justwatch = client.Justwatch.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Justwatch():load({ id = "test01" })
+local result, err = client:Justwatch():load()
 ```
 
-## How it works
-
-Every SDK call runs the same five-stage pipeline:
-
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), so features can inspect or modify the pipeline without
-forking the SDK.
-
-### Features
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-Pass custom features via the `extend` option at construction time.
-
-### Direct and Prepare
+## Direct and prepare
 
 For endpoints the entity model doesn't cover, use the low-level methods:
 
@@ -297,6 +290,31 @@ local result, err = client:direct({
   params = { id = "example" },
 })
 ```
+
+## Advanced
+
+> Everyday use only needs the sections above. This explains the internals
+> behind every call — relevant when writing custom features.
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
 
 ## Per-language documentation
 

@@ -17,7 +17,7 @@ class Justwatch
 {
 }
 
-/** Match filter for Justwatch#load (any subset of Justwatch fields). */
+/** Request payload for Justwatch#load. */
 class JustwatchLoadMatch
 {
 }
@@ -49,7 +49,7 @@ class Search
 {
 }
 
-/** Match filter for Search#load (any subset of Search fields). */
+/** Request payload for Search#load. */
 class SearchLoadMatch
 {
 }

@@ -8,7 +8,7 @@ Complete API reference for the SpiderManMovies PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/spider-man-movies_sdk.php';
+require_once __DIR__ . '/spidermanmovies_sdk.php';
 
 $client = new SpiderManMoviesSDK($options);
 ```
@@ -57,11 +57,11 @@ Create a new `PhotoEntity` instance. Pass `null` for no initial data.
 
 Create a new `SearchEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): SpiderManMoviesUtility`
 
 Return a copy of the SDK utility object.
 
@@ -107,24 +107,24 @@ $justwatch = $client->Justwatch();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Justwatch()->load(["id" => "justwatch_id"]);
+$result = $client->Justwatch()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -133,7 +133,7 @@ Set the entity match criteria.
 Create a new `JustwatchEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -158,19 +158,19 @@ $result = $client->Media()->load(["id" => "media_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -179,7 +179,7 @@ Set the entity match criteria.
 Create a new `MediaEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -204,19 +204,19 @@ $result = $client->Photo()->load(["id" => "photo_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -225,7 +225,7 @@ Set the entity match criteria.
 Create a new `PhotoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -245,24 +245,24 @@ $search = $client->Search();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Search()->load(["id" => "search_id"]);
+$result = $client->Search()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -271,7 +271,7 @@ Set the entity match criteria.
 Create a new `SearchEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -221,25 +221,25 @@ class SpiderManMoviesSDK:
 
 
     def Justwatch(self, data=None) -> "JustwatchEntity":
-        """Entity factory: client.Justwatch().list({}) / client.Justwatch().load({"id": ...})."""
+        """Entity factory: client.Justwatch().list() / client.Justwatch().load({"id": ...})."""
         from entity.justwatch_entity import JustwatchEntity
         return JustwatchEntity(self, data)
 
 
     def Media(self, data=None) -> "MediaEntity":
-        """Entity factory: client.Media().list({}) / client.Media().load({"id": ...})."""
+        """Entity factory: client.Media().list() / client.Media().load({"id": ...})."""
         from entity.media_entity import MediaEntity
         return MediaEntity(self, data)
 
 
     def Photo(self, data=None) -> "PhotoEntity":
-        """Entity factory: client.Photo().list({}) / client.Photo().load({"id": ...})."""
+        """Entity factory: client.Photo().list() / client.Photo().load({"id": ...})."""
         from entity.photo_entity import PhotoEntity
         return PhotoEntity(self, data)
 
 
     def Search(self, data=None) -> "SearchEntity":
-        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
+        """Entity factory: client.Search().list() / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 

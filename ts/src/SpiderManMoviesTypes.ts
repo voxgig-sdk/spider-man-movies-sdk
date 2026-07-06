@@ -8,7 +8,8 @@
 export interface Justwatch {
 }
 
-export type JustwatchLoadMatch = Partial<Justwatch>
+export interface JustwatchLoadMatch {
+}
 
 export interface Media {
 }
@@ -27,5 +28,6 @@ export interface PhotoLoadMatch {
 export interface Search {
 }
 
-export type SearchLoadMatch = Partial<Search>
+export interface SearchLoadMatch {
+}
 

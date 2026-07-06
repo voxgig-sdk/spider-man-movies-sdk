@@ -155,7 +155,7 @@ const justwatch = client.Justwatch()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Justwatch().load({ id: 'justwatch_id' })
+const result = await client.Justwatch().load()
 ```
 
 ### Common Methods
@@ -287,7 +287,7 @@ const search = client.Search()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Search().load({ id: 'search_id' })
+const result = await client.Search().load()
 ```
 
 ### Common Methods

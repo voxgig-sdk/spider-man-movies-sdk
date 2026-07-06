@@ -12,8 +12,7 @@ import "encoding/json"
 type Justwatch struct {
 }
 
-// JustwatchLoadMatch mirrors the justwatch fields as an all-optional match
-// filter (Go analog of Partial<Justwatch>).
+// JustwatchLoadMatch is the typed request payload for Justwatch.LoadTyped.
 type JustwatchLoadMatch struct {
 }
 
@@ -39,8 +38,7 @@ type PhotoLoadMatch struct {
 type Search struct {
 }
 
-// SearchLoadMatch mirrors the search fields as an all-optional match
-// filter (Go analog of Partial<Search>).
+// SearchLoadMatch is the typed request payload for Search.LoadTyped.
 type SearchLoadMatch struct {
 }
 

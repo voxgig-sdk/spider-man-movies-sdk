@@ -8,7 +8,7 @@ Complete API reference for the SpiderManMovies Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'spider-man-movies_sdk'
+require_relative 'SpiderManMovies_sdk'
 
 client = SpiderManMoviesSDK.new(options)
 ```
@@ -108,7 +108,7 @@ justwatch = client.Justwatch
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Justwatch.load({ "id" => "justwatch_id" })
+result = client.Justwatch.load()
 ```
 
 ### Common Methods
@@ -246,7 +246,7 @@ search = client.Search
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Search.load({ "id" => "search_id" })
+result = client.Search.load()
 ```
 
 ### Common Methods
