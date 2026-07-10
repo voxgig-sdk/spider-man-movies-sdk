@@ -18,10 +18,10 @@ main: {
           url: "https://imdb.iamidiotareyoutoo.com"
         }
       ]
+      summary: "Free Movie DB: The Free Movie Database API."
       termsOfService: "/legal"
       title: "Free Movie DB - The Free Movie Database API"
       version: "0.3.1"
+      website: "https://github.com/TelegramPlayGround/Unofficial-IMDb-API/"
     }
   }
-}
-

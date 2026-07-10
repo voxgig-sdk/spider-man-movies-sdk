@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -502,14 +499,17 @@
           "name": "GNU Affero General Public License 3.0",
           "url": "https://github.com/TelegramPlayGround/Unofficial-IMDb-API/raw/main/LICENSE"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "url": "https://imdb.iamidiotareyoutoo.com"
           }
         ],
+        "summary": "Free Movie DB: The Free Movie Database API.",
         "termsOfService": "/legal",
         "title": "Free Movie DB - The Free Movie Database API",
-        "version": "0.3.1"
+        "version": "0.3.1",
+        "website": "https://github.com/TelegramPlayGround/Unofficial-IMDb-API/"
       },
       "option": {},
       "target": {
@@ -562,6 +562,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -612,6 +615,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

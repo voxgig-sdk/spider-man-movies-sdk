@@ -103,6 +103,7 @@ same parameters as `Direct()`.
 
 ```go
 justwatch := client.Justwatch(nil)
+fmt.Println(justwatch.GetName()) // "justwatch"
 ```
 
 ### Operations
@@ -113,6 +114,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Justwatch(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -143,6 +148,7 @@ Return the entity name.
 
 ```go
 media := client.Media(nil)
+fmt.Println(media.GetName()) // "media"
 ```
 
 ### Operations
@@ -153,6 +159,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Media(nil).Load(map[string]any{"id": "media_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -183,6 +193,7 @@ Return the entity name.
 
 ```go
 photo := client.Photo(nil)
+fmt.Println(photo.GetName()) // "photo"
 ```
 
 ### Operations
@@ -193,6 +204,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Photo(nil).Load(map[string]any{"id": "photo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -223,6 +238,7 @@ Return the entity name.
 
 ```go
 search := client.Search(nil)
+fmt.Println(search.GetName()) // "search"
 ```
 
 ### Operations
@@ -233,6 +249,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Search(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
