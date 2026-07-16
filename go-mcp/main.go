@@ -37,7 +37,20 @@ func main() {
 	addr := flag.String("addr", ":8080", "listen address for http transport")
 	flag.Parse()
 
-	client := sdk.NewSpiderManMoviesSDK(nil)
+	// Configure from the environment: SPIDER_MAN_MOVIES_APIKEY carries the API key and
+	// SPIDER_MAN_MOVIES_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("SPIDER_MAN_MOVIES_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("SPIDER_MAN_MOVIES_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewSpiderManMoviesSDK(opts)
 	server := mcp.NewServer(
 		&mcp.Implementation{
 			Name:    "spider-man-movies",
