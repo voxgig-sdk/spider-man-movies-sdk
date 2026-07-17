@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- SpiderManMovies SDK exists test
 
 local sdk = require("spider-man-movies_sdk")
 
