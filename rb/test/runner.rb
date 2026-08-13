@@ -23,8 +23,8 @@ module SpiderManMoviesTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("SPIDERMANMOVIES_TEST_LIVE")
-    override = getenv("SPIDERMANMOVIES_TEST_OVERRIDE")
+    live = getenv("SPIDER_MAN_MOVIES_TEST_LIVE")
+    override = getenv("SPIDER_MAN_MOVIES_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module SpiderManMoviesTestRunner
       end
     end
 
-    explain = getenv("SPIDERMANMOVIES_TEST_EXPLAIN")
-    m["SPIDERMANMOVIES_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("SPIDER_MAN_MOVIES_TEST_EXPLAIN")
+    m["SPIDER_MAN_MOVIES_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

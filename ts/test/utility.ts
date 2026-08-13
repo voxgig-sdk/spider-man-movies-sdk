@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.SPIDERMANMOVIES_TEST_LIVE ||
-    'TRUE' === process.env.SPIDERMANMOVIES_TEST_OVERRIDE
+    'TRUE' === process.env.SPIDER_MAN_MOVIES_TEST_LIVE ||
+    'TRUE' === process.env.SPIDER_MAN_MOVIES_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.SPIDERMANMOVIES_TEST_EXPLAIN = process.env.SPIDERMANMOVIES_TEST_EXPLAIN || m.SPIDERMANMOVIES_TEST_EXPLAIN
+  m.SPIDER_MAN_MOVIES_TEST_EXPLAIN = process.env.SPIDER_MAN_MOVIES_TEST_EXPLAIN || m.SPIDER_MAN_MOVIES_TEST_EXPLAIN
 
   return m
 }

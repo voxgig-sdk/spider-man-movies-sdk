@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from spidermanmovies_sdk.utility.voxgig_struct import voxgig_struct as vs
 from spidermanmovies_sdk import SpiderManMoviesSDK
-from core import helpers
+from spidermanmovies_sdk.core import helpers
 from test import runner
 
 
@@ -66,11 +66,11 @@ def _photo_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "SPIDERMANMOVIES_TEST_PHOTO_ENTID": {},
-        "SPIDERMANMOVIES_TEST_LIVE": "FALSE",
+        "SPIDER_MAN_MOVIES_TEST_PHOTO_ENTID": {},
+        "SPIDER_MAN_MOVIES_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("SPIDERMANMOVIES_TEST_LIVE") == "TRUE"
+    live = env.get("SPIDER_MAN_MOVIES_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

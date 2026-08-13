@@ -69,11 +69,11 @@ def media_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "SPIDERMANMOVIES_TEST_MEDIA_ENTID" => {},
-    "SPIDERMANMOVIES_TEST_LIVE" => "FALSE",
+    "SPIDER_MAN_MOVIES_TEST_MEDIA_ENTID" => {},
+    "SPIDER_MAN_MOVIES_TEST_LIVE" => "FALSE",
   })
 
-  live = env["SPIDERMANMOVIES_TEST_LIVE"] == "TRUE"
+  live = env["SPIDER_MAN_MOVIES_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

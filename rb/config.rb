@@ -56,6 +56,7 @@ module SpiderManMoviesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/justwatch",
                   "parts" => [
@@ -104,6 +105,7 @@ module SpiderManMoviesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/media/{id}",
                   "parts" => [
@@ -170,6 +172,7 @@ module SpiderManMoviesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/photo/{id}",
                   "parts" => [
@@ -243,6 +246,7 @@ module SpiderManMoviesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/search",
                   "parts" => [

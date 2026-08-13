@@ -38,7 +38,7 @@ client = SpiderManMoviesSDK()
 
 ### 3. Load a justwatch
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -55,8 +55,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    justwatch = client.Justwatch().load()
-    print(justwatch)
+    media = client.Media().load({"id": "example_id"})
+    print(media)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -122,9 +122,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = SpiderManMoviesSDK.test()
 
-# Entity ops return the bare record and raise on error.
-justwatch = client.Justwatch().load()
-# justwatch contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+media = client.Media().load({"id": "test01"})
+# media contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -221,7 +222,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -423,11 +424,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-justwatch = client.Justwatch()
-justwatch.load()
+media = client.Media()
+media.load({"id": "example_id"})
 
-# justwatch.data_get() now returns the justwatch data from the last load
-# justwatch.match_get() returns the last match criteria
+# media.data_get() now returns the media data from the last load
+# media.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

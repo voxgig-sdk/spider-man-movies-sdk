@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# SpiderManMovies SDK exists test
 
 import pytest
 from spidermanmovies_sdk import SpiderManMoviesSDK

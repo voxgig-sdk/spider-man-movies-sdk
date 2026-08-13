@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import SpiderManMoviesControl
-from core.error import SpiderManMoviesError
-from core.result import SpiderManMoviesResult
-from core.spec import SpiderManMoviesSpec
+from spidermanmovies_sdk.config import make_config
+from spidermanmovies_sdk.features import _make_feature
+from spidermanmovies_sdk.core.control import SpiderManMoviesControl
+from spidermanmovies_sdk.core.error import SpiderManMoviesError
+from spidermanmovies_sdk.core.result import SpiderManMoviesResult
+from spidermanmovies_sdk.core.spec import SpiderManMoviesSpec
 
 
 # True when this SDK was generated with the named feature.

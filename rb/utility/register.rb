@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ SpiderManMoviesUtility.registrar = ->(u) {
   u.prepare_params = SpiderManMoviesUtilities::PrepareParams
   u.prepare_path = SpiderManMoviesUtilities::PreparePath
   u.prepare_query = SpiderManMoviesUtilities::PrepareQuery
+  u.graphql_body = SpiderManMoviesUtilities::GraphqlBody
+  u.graphql_errors = SpiderManMoviesUtilities::GraphqlErrors
   u.result_basic = SpiderManMoviesUtilities::ResultBasic
   u.result_body = SpiderManMoviesUtilities::ResultBody
   u.result_headers = SpiderManMoviesUtilities::ResultHeaders

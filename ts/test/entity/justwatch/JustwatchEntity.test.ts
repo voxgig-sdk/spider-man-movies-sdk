@@ -26,8 +26,8 @@ import {
 describe('JustwatchEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SPIDERMANMOVIES_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SPIDERMANMOVIES_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SPIDER_MAN_MOVIES_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SPIDER_MAN_MOVIES_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SpiderManMoviesSDK.test()
@@ -62,7 +62,7 @@ describe('JustwatchEntity', async () => {
     // LOAD
     const justwatch_ref01_ent = client.Justwatch()
     const justwatch_ref01_match_dt0: any = {}
-    const justwatch_ref01_data_dt0 = await justwatch_ref01_ent.load(justwatch_ref01_match_dt0)
+    const justwatch_ref01_data_dt0 = (await justwatch_ref01_ent.load(justwatch_ref01_match_dt0)).data()
     assert(null != justwatch_ref01_data_dt0)
 
 

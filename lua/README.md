@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local justwatch, err = client:Justwatch():load()
+local media, err = client:Media():load({ id = "example_id" })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Justwatch():load()
+local result, err = client:Media():load({ id = "test01" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -409,11 +409,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local justwatch = client:Justwatch()
-justwatch:load()
+local media = client:Media()
+media:load({ id = "example_id" })
 
--- justwatch:data_get() now returns the justwatch data from the last load
--- justwatch:match_get() returns the last match criteria
+-- media:data_get() now returns the media data from the last load
+-- media:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

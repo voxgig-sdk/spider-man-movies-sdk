@@ -16,11 +16,11 @@
 import pytest
 
 from spidermanmovies_sdk import SpiderManMoviesSDK
-from core.error import SpiderManMoviesError
-from core.result import SpiderManMoviesResult
-from core.response import SpiderManMoviesResponse
-from core.spec import SpiderManMoviesSpec
-from feature.base_feature import SpiderManMoviesBaseFeature
+from spidermanmovies_sdk.core.error import SpiderManMoviesError
+from spidermanmovies_sdk.core.result import SpiderManMoviesResult
+from spidermanmovies_sdk.core.response import SpiderManMoviesResponse
+from spidermanmovies_sdk.core.spec import SpiderManMoviesSpec
+from spidermanmovies_sdk.feature.base_feature import SpiderManMoviesBaseFeature
 
 
 def _client():

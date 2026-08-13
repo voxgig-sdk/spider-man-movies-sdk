@@ -35,7 +35,7 @@ $client = new SpiderManMoviesSDK();
 
 ```php
 try {
-    // load() returns the bare Justwatch record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Justwatch record (throws on error).
     $justwatch = $client->Justwatch()->load();
     print_r($justwatch);
 } catch (\Throwable $err) {
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $justwatch = $client->Justwatch()->load();
+    $media = $client->Media()->load(["id" => "example_id"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -118,14 +118,18 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = SpiderManMoviesSDK::test();
+$client = SpiderManMoviesSDK::test([
+    "entity" => ["media" => ["test01" => ["id" => "test01"]]],
+]);
 
-// Entity ops return the bare mock record (throws on error).
-$justwatch = $client->Justwatch()->load();
-print_r($justwatch);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$media = $client->Media()->load(["id" => "test01"]);
+print_r($media);
 ```
 
 ### Use a custom fetch function
@@ -225,7 +229,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -297,7 +301,7 @@ Create an instance: `$justwatch = $client->Justwatch();`
 #### Example: Load
 
 ```php
-// load() returns the bare Justwatch record (throws on error).
+// load() returns the ENTITY — call data_get() for the Justwatch record (throws on error).
 $justwatch = $client->Justwatch()->load();
 ```
 
@@ -315,7 +319,7 @@ Create an instance: `$media = $client->Media();`
 #### Example: Load
 
 ```php
-// load() returns the bare Media record (throws on error).
+// load() returns the ENTITY — call data_get() for the Media record (throws on error).
 $media = $client->Media()->load(["id" => "media_id"]);
 ```
 
@@ -333,7 +337,7 @@ Create an instance: `$photo = $client->Photo();`
 #### Example: Load
 
 ```php
-// load() returns the bare Photo record (throws on error).
+// load() returns the ENTITY — call data_get() for the Photo record (throws on error).
 $photo = $client->Photo()->load(["id" => "photo_id"]);
 ```
 
@@ -351,7 +355,7 @@ Create an instance: `$search = $client->Search();`
 #### Example: Load
 
 ```php
-// load() returns the bare Search record (throws on error).
+// load() returns the ENTITY — call data_get() for the Search record (throws on error).
 $search = $client->Search()->load();
 ```
 
@@ -432,11 +436,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$justwatch = $client->Justwatch();
-$justwatch->load();
+$media = $client->Media();
+$media->load(["id" => "example_id"]);
 
-// $justwatch->data_get() now returns the justwatch data from the last load
-// $justwatch->match_get() returns the last match criteria
+// $media->data_get() now returns the media data from the last load
+// $media->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

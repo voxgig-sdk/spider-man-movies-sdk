@@ -53,8 +53,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const justwatch = await client.Justwatch().load()
-  console.log(justwatch)
+  const media = await client.Media().load({ id: "example_id" })
+  console.log(media)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -120,9 +120,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = SpiderManMoviesSDK.test()
 
-const justwatch = await client.Justwatch().load()
-// justwatch is a bare entity populated with mock response data
-console.log(justwatch)
+const media = await client.Media().load({ id: 'test01' })
+// media is the entity, populated with mock response data
+// — call media.data() for the record itself
+console.log(media)
 ```
 
 You can also use the instance method:
@@ -137,10 +138,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Justwatch()
+const entity = client.Media()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ id: 'example' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -461,11 +462,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const justwatch = client.Justwatch()
-await justwatch.load()
+const media = client.Media()
+await media.load({ id: "example_id" })
 
-// justwatch.data() now returns the justwatch data from the last `load`
-// justwatch.match() returns the last match criteria
+// media.data() now returns the media data from the last `load`
+// media.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

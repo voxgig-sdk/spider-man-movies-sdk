@@ -60,11 +60,11 @@ function justwatch_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["SPIDERMANMOVIES_TEST_JUSTWATCH_ENTID"] = {},
-    ["SPIDERMANMOVIES_TEST_LIVE"] = "FALSE",
+    ["SPIDER_MAN_MOVIES_TEST_JUSTWATCH_ENTID"] = {},
+    ["SPIDER_MAN_MOVIES_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["SPIDERMANMOVIES_TEST_LIVE"] == "TRUE"
+  local live = env["SPIDER_MAN_MOVIES_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

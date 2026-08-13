@@ -61,6 +61,7 @@ class SpiderManMoviesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/justwatch',
                   'parts' => [
@@ -109,6 +110,7 @@ class SpiderManMoviesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/media/{id}',
                   'parts' => [
@@ -175,6 +177,7 @@ class SpiderManMoviesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/photo/{id}',
                   'parts' => [
@@ -248,6 +251,7 @@ class SpiderManMoviesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search',
                   'parts' => [

@@ -34,7 +34,7 @@ client = SpiderManMoviesSDK.new
 
 ```ruby
 begin
-  # load returns the bare Justwatch record (raises on error).
+  # load returns the ENTITY — call data_get for the Justwatch record (raises on error).
   justwatch = client.Justwatch.load()
   puts justwatch
 rescue => err
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  justwatch = client.Justwatch.load()
+  media = client.Media.load({ "id" => "example_id" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -112,14 +112,18 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = SpiderManMoviesSDK.test
+client = SpiderManMoviesSDK.test({
+  "entity" => { "media" => { "test01" => { "id" => "test01" } } },
+})
 
-# Entity ops return the bare mock record (raises on error).
-justwatch = client.Justwatch.load()
-puts justwatch
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+media = client.Media.load({ "id" => "test01" })
+puts media
 ```
 
 ### Use a custom fetch function
@@ -287,7 +291,7 @@ Create an instance: `justwatch = client.Justwatch`
 #### Example: Load
 
 ```ruby
-# load returns the bare Justwatch record (raises on error).
+# load returns the ENTITY — call data_get for the Justwatch record (raises on error).
 justwatch = client.Justwatch.load()
 ```
 
@@ -305,7 +309,7 @@ Create an instance: `media = client.Media`
 #### Example: Load
 
 ```ruby
-# load returns the bare Media record (raises on error).
+# load returns the ENTITY — call data_get for the Media record (raises on error).
 media = client.Media.load({ "id" => "media_id" })
 ```
 
@@ -323,7 +327,7 @@ Create an instance: `photo = client.Photo`
 #### Example: Load
 
 ```ruby
-# load returns the bare Photo record (raises on error).
+# load returns the ENTITY — call data_get for the Photo record (raises on error).
 photo = client.Photo.load({ "id" => "photo_id" })
 ```
 
@@ -341,7 +345,7 @@ Create an instance: `search = client.Search`
 #### Example: Load
 
 ```ruby
-# load returns the bare Search record (raises on error).
+# load returns the ENTITY — call data_get for the Search record (raises on error).
 search = client.Search.load()
 ```
 
@@ -422,11 +426,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-justwatch = client.Justwatch
-justwatch.load()
+media = client.Media
+media.load({ "id" => "example_id" })
 
-# justwatch.data_get now returns the justwatch data from the last load
-# justwatch.match_get returns the last match criteria
+# media.data_get now returns the media data from the last load
+# media.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

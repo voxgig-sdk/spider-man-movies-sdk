@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = SpiderManMoviesSDK.test()
-const justwatch = await client.Justwatch().load()
-// justwatch is a bare Justwatch populated with mock data
-console.log(justwatch)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = SpiderManMoviesSDK.test({
+  entity: {
+    media: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const media = await client.Media().load({ id: 'test01' })
+// media is the Media entity, populated with mock data
+// — call media.data() for the record itself
+console.log(media)
 ```
 
 ### Python
 
 ```python
 client = SpiderManMoviesSDK.test()
-justwatch = client.Justwatch().load()
-print(justwatch)
+media = client.Media().load({"id": "test01"})
+print(media)
 ```
 
 ### PHP
@@ -57,17 +66,17 @@ print(justwatch)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = SpiderManMoviesSDK::test([
-    "entity" => ["justwatch" => ["test01" => []]],
+    "entity" => ["media" => ["test01" => ["id" => "test01"]]],
 ]);
-$justwatch = $client->Justwatch()->load();
+$media = $client->Media()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Justwatch(nil).Load(
-    nil, nil,
+result, err := client.Media(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -76,16 +85,16 @@ result, err := client.Justwatch(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = SpiderManMoviesSDK.test({
-  "entity" => { "justwatch" => { "test01" => {} } },
+  "entity" => { "media" => { "test01" => { "id" => "test01" } } },
 })
-justwatch = client.Justwatch.load()
+media = client.Media.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Justwatch():load()
+local result, err = client:Media():load({ id = "test01" })
 ```
 
 ## Packages
@@ -185,7 +194,7 @@ require_once 'spidermanmovies_sdk.php';
 $client = new SpiderManMoviesSDK();
 
 
-// Load a specific justwatch (returns the bare record; throws on error)
+// Load a specific justwatch (returns the ENTITY; call data_get() for the record; throws on error)
 $justwatch = $client->Justwatch()->load();
 print_r($justwatch);
 ```
@@ -213,7 +222,7 @@ require_relative "SpiderManMovies_sdk"
 client = SpiderManMoviesSDK.new
 
 
-# Load a specific justwatch (returns the bare record; raises on error)
+# Load a specific justwatch (returns the ENTITY; call data_get for the record)
 justwatch = client.Justwatch.load()
 puts justwatch
 ```
@@ -347,6 +356,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://imdb.iamidiotareyoutoo.com](https://imdb.iamidiotareyoutoo.com)
 
