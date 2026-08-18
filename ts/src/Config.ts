@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://imdb.iamidiotareyoutoo.com',
+    base: "https://imdb.iamidiotareyoutoo.com",
 
     headers: {
       "content-type": "application/json"
@@ -70,19 +70,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "l",
                     "orig": "l",
-                    "reqd": false,
                     "type": "`$ANY`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "q",
                     "orig": "q",
@@ -106,11 +102,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -126,17 +120,14 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -155,11 +146,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -175,34 +164,27 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "h",
                     "orig": "h",
-                    "reqd": false,
                     "type": "`$ANY`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "w",
                     "orig": "w",
-                    "reqd": false,
                     "type": "`$ANY`"
                   }
                 ]
@@ -224,11 +206,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -244,39 +224,30 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "lsn",
                     "orig": "lsn",
-                    "reqd": false,
                     "type": "`$ANY`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "q",
                     "orig": "q",
-                    "reqd": false,
                     "type": "`$ANY`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "tt",
                     "orig": "tt",
-                    "reqd": false,
                     "type": "`$ANY`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "v",
                     "orig": "v",
-                    "reqd": false,
                     "type": "`$ANY`"
                   }
                 ]
@@ -298,11 +269,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

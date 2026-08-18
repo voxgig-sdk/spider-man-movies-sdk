@@ -40,7 +40,7 @@ class SpiderManMoviesSDK
         $utility = new SpiderManMoviesUtility();
         $this->_utility = $utility;
 
-        $config = SpiderManMoviesConfig::make_config();
+        $config = SpiderManMoviesConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

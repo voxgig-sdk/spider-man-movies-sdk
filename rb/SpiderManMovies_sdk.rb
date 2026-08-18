@@ -28,7 +28,7 @@ class SpiderManMoviesSDK
     utility = SpiderManMoviesUtility.new
     @_utility = utility
 
-    config = SpiderManMoviesConfig.make_config
+    config = SpiderManMoviesConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

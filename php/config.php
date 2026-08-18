@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class SpiderManMoviesConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -40,19 +63,15 @@ class SpiderManMoviesConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'l',
                         'orig' => 'l',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'q',
                         'orig' => 'q',
@@ -77,10 +96,8 @@ class SpiderManMoviesConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -96,17 +113,14 @@ class SpiderManMoviesConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -126,10 +140,8 @@ class SpiderManMoviesConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -145,34 +157,27 @@ class SpiderManMoviesConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'id',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'h',
                         'orig' => 'h',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'w',
                         'orig' => 'w',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -195,10 +200,8 @@ class SpiderManMoviesConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -214,39 +217,30 @@ class SpiderManMoviesConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'lsn',
                         'orig' => 'lsn',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'q',
                         'orig' => 'q',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'tt',
                         'orig' => 'tt',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'v',
                         'orig' => 'v',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -269,10 +263,8 @@ class SpiderManMoviesConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [

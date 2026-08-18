@@ -23,6 +23,7 @@ build = {
   modules = {
     ["spider-man-movies_sdk"] = "spider-man-movies_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }
