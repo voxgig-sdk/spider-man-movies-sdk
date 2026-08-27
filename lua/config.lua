@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -82,7 +83,12 @@ local function make_config()
         },
       },
       ["media"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "media",
         ["op"] = {
           ["load"] = {
@@ -126,7 +132,12 @@ local function make_config()
         },
       },
       ["photo"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "photo",
         ["op"] = {
           ["load"] = {

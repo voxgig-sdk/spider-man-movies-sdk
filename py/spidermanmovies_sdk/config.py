@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -103,7 +104,12 @@ def make_config():
         },
       },
       "media": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "media",
         "op": {
           "load": {
@@ -147,7 +153,12 @@ def make_config():
         },
       },
       "photo": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "photo",
         "op": {
           "load": {

@@ -41,9 +41,13 @@ class PhotoEntityTest < Minitest::Test
 
     # LOAD
     photo_ref01_ent = client.Photo(nil)
-    photo_ref01_match_dt0 = {}
+    photo_ref01_match_dt0 = {
+      "id" => photo_ref01_data["id"],
+    }
     photo_ref01_data_dt0_loaded = photo_ref01_ent.load(photo_ref01_match_dt0, nil)
-    assert !photo_ref01_data_dt0_loaded.nil?
+    photo_ref01_data_dt0_load_result = Helpers.to_map(photo_ref01_data_dt0_loaded.respond_to?(:data_get) ? photo_ref01_data_dt0_loaded.data_get : photo_ref01_data_dt0_loaded)
+    assert !photo_ref01_data_dt0_load_result.nil?
+    assert_equal photo_ref01_data_dt0_load_result["id"], photo_ref01_data["id"]
 
   end
 end

@@ -48,9 +48,13 @@ class PhotoEntityTest extends TestCase
 
         // LOAD
         $photo_ref01_ent = $client->Photo(null);
-        $photo_ref01_match_dt0 = [];
+        $photo_ref01_match_dt0 = [
+            "id" => $photo_ref01_data["id"],
+        ];
         $photo_ref01_data_dt0_loaded = $photo_ref01_ent->load($photo_ref01_match_dt0, null);
-        $this->assertNotNull($photo_ref01_data_dt0_loaded);
+        $photo_ref01_data_dt0_load_result = Helpers::to_map(is_object($photo_ref01_data_dt0_loaded) && method_exists($photo_ref01_data_dt0_loaded, 'data_get') ? $photo_ref01_data_dt0_loaded->data_get() : $photo_ref01_data_dt0_loaded);
+        $this->assertNotNull($photo_ref01_data_dt0_load_result);
+        $this->assertEquals($photo_ref01_data_dt0_load_result["id"], $photo_ref01_data["id"]);
 
     }
 }

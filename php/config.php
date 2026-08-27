@@ -42,6 +42,7 @@ class SpiderManMoviesConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -108,7 +109,12 @@ class SpiderManMoviesConfig
           ],
         ],
         'media' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'media',
           'op' => [
             'load' => [
@@ -152,7 +158,12 @@ class SpiderManMoviesConfig
           ],
         ],
         'photo' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'photo',
           'op' => [
             'load' => [

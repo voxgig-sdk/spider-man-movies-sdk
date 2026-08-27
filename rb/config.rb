@@ -28,6 +28,7 @@ module SpiderManMoviesConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -94,7 +95,12 @@ module SpiderManMoviesConfig
           },
         },
         "media" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "media",
           "op" => {
             "load" => {
@@ -138,7 +144,12 @@ module SpiderManMoviesConfig
           },
         },
         "photo" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "photo",
           "op" => {
             "load" => {

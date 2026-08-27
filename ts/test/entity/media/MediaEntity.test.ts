@@ -59,9 +59,12 @@ describe('MediaEntity', async () => {
 
     let media_ref01_data = Object.values(setup.data.existing.media)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const media_ref01_ent = client.Media()
+    const media_ref01_match_dt0: any = {}
+    media_ref01_match_dt0.id = media_ref01_data.id
+    const media_ref01_data_dt0 = (await media_ref01_ent.load(media_ref01_match_dt0)).data()
+    assert(media_ref01_data_dt0.id === media_ref01_data.id)
 
 
   })

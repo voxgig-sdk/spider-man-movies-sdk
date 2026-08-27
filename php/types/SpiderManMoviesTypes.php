@@ -25,6 +25,7 @@ class JustwatchLoadMatch
 /** Media entity data model. */
 class Media
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Media#load. */
@@ -36,6 +37,7 @@ class MediaLoadMatch
 /** Photo entity data model. */
 class Photo
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Photo#load. */

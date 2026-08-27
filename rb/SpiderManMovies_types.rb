@@ -17,8 +17,13 @@ class JustwatchLoadMatch
 end
 
 # Media entity data model.
-class Media
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Media = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Media#load.
 #
@@ -30,8 +35,13 @@ MediaLoadMatch = Struct.new(
 )
 
 # Photo entity data model.
-class Photo
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Photo = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Photo#load.
 #

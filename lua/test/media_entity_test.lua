@@ -44,10 +44,14 @@ describe("MediaEntity", function()
 
     -- LOAD
     local media_ref01_ent = client:Media(nil)
-    local media_ref01_match_dt0 = {}
+    local media_ref01_match_dt0 = {
+      id = media_ref01_data["id"],
+    }
     local media_ref01_data_dt0_loaded, err = media_ref01_ent:load(media_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(media_ref01_data_dt0_loaded)
+    local media_ref01_data_dt0_load_result = helpers.to_map(type(media_ref01_data_dt0_loaded) == 'table' and media_ref01_data_dt0_loaded.data_get and media_ref01_data_dt0_loaded:data_get() or media_ref01_data_dt0_loaded)
+    assert.is_not_nil(media_ref01_data_dt0_load_result)
+    assert.are.equal(media_ref01_data_dt0_load_result["id"], media_ref01_data["id"])
 
   end)
 end)

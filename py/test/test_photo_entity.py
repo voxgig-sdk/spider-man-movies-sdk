@@ -48,9 +48,13 @@ class TestPhotoEntity:
 
         # LOAD
         photo_ref01_ent = client.Photo(None)
-        photo_ref01_match_dt0 = {}
+        photo_ref01_match_dt0 = {
+            "id": photo_ref01_data["id"],
+        }
         photo_ref01_data_dt0_loaded = photo_ref01_ent.load(photo_ref01_match_dt0, None)
-        assert photo_ref01_data_dt0_loaded is not None
+        photo_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(photo_ref01_data_dt0_loaded))
+        assert photo_ref01_data_dt0_load_result is not None
+        assert photo_ref01_data_dt0_load_result["id"] == photo_ref01_data["id"]
 
 
 

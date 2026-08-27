@@ -48,9 +48,13 @@ class TestMediaEntity:
 
         # LOAD
         media_ref01_ent = client.Media(None)
-        media_ref01_match_dt0 = {}
+        media_ref01_match_dt0 = {
+            "id": media_ref01_data["id"],
+        }
         media_ref01_data_dt0_loaded = media_ref01_ent.load(media_ref01_match_dt0, None)
-        assert media_ref01_data_dt0_loaded is not None
+        media_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(media_ref01_data_dt0_loaded))
+        assert media_ref01_data_dt0_load_result is not None
+        assert media_ref01_data_dt0_load_result["id"] == media_ref01_data["id"]
 
 
 

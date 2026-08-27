@@ -22,6 +22,7 @@ type JustwatchLoadMatch struct {
 
 // Media is the typed data model for the media entity.
 type Media struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // MediaLoadMatch is the typed request payload for Media.LoadTyped.
@@ -31,6 +32,7 @@ type MediaLoadMatch struct {
 
 // Photo is the typed data model for the photo entity.
 type Photo struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // PhotoLoadMatch is the typed request payload for Photo.LoadTyped.

@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -123,7 +124,12 @@ class Config {
       }
     },
     "media": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "media",
       "op": {
         "load": {
@@ -167,7 +173,12 @@ class Config {
       }
     },
     "photo": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "photo",
       "op": {
         "load": {

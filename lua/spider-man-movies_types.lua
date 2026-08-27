@@ -11,11 +11,13 @@
 ---@class JustwatchLoadMatch
 
 ---@class Media
+---@field id? string
 
 ---@class MediaLoadMatch
 ---@field id string
 
 ---@class Photo
+---@field id? string
 
 ---@class PhotoLoadMatch
 ---@field id string

@@ -61,13 +61,19 @@ func TestMediaEntity(t *testing.T) {
 
 		// LOAD
 		mediaRef01Ent := client.Media(nil)
-		mediaRef01MatchDt0 := map[string]any{}
+		mediaRef01MatchDt0 := map[string]any{
+			"id": mediaRef01Data["id"],
+		}
 		mediaRef01DataDt0Loaded, err := mediaRef01Ent.Load(mediaRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if mediaRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		mediaRef01DataDt0LoadResult := core.ToMapAny(entityData(mediaRef01DataDt0Loaded))
+		if mediaRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if mediaRef01DataDt0LoadResult["id"] != mediaRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

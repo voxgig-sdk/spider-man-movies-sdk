@@ -151,6 +151,12 @@ media := client.Media(nil)
 fmt.Println(media.GetName()) // "media"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -195,6 +201,12 @@ Return the entity name.
 photo := client.Photo(nil)
 fmt.Println(photo.GetName()) // "photo"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

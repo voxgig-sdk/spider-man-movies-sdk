@@ -24,16 +24,16 @@ class JustwatchLoadMatch(TypedDict):
     pass
 
 
-class Media(TypedDict):
-    pass
+class Media(TypedDict, total=False):
+    id: str
 
 
 class MediaLoadMatch(TypedDict):
     id: str
 
 
-class Photo(TypedDict):
-    pass
+class Photo(TypedDict, total=False):
+    id: str
 
 
 class PhotoLoadMatch(TypedDict):

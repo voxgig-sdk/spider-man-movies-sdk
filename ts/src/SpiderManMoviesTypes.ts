@@ -12,6 +12,7 @@ export interface JustwatchLoadMatch {
 }
 
 export interface Media {
+  id?: string
 }
 
 export interface MediaLoadMatch {
@@ -19,6 +20,7 @@ export interface MediaLoadMatch {
 }
 
 export interface Photo {
+  id?: string
 }
 
 export interface PhotoLoadMatch {

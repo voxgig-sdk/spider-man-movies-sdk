@@ -61,13 +61,19 @@ func TestPhotoEntity(t *testing.T) {
 
 		// LOAD
 		photoRef01Ent := client.Photo(nil)
-		photoRef01MatchDt0 := map[string]any{}
+		photoRef01MatchDt0 := map[string]any{
+			"id": photoRef01Data["id"],
+		}
 		photoRef01DataDt0Loaded, err := photoRef01Ent.Load(photoRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if photoRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		photoRef01DataDt0LoadResult := core.ToMapAny(entityData(photoRef01DataDt0Loaded))
+		if photoRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if photoRef01DataDt0LoadResult["id"] != photoRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

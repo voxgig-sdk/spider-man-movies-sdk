@@ -48,9 +48,13 @@ class MediaEntityTest extends TestCase
 
         // LOAD
         $media_ref01_ent = $client->Media(null);
-        $media_ref01_match_dt0 = [];
+        $media_ref01_match_dt0 = [
+            "id" => $media_ref01_data["id"],
+        ];
         $media_ref01_data_dt0_loaded = $media_ref01_ent->load($media_ref01_match_dt0, null);
-        $this->assertNotNull($media_ref01_data_dt0_loaded);
+        $media_ref01_data_dt0_load_result = Helpers::to_map(is_object($media_ref01_data_dt0_loaded) && method_exists($media_ref01_data_dt0_loaded, 'data_get') ? $media_ref01_data_dt0_loaded->data_get() : $media_ref01_data_dt0_loaded);
+        $this->assertNotNull($media_ref01_data_dt0_load_result);
+        $this->assertEquals($media_ref01_data_dt0_load_result["id"], $media_ref01_data["id"]);
 
     }
 }

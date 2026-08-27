@@ -192,6 +192,12 @@ Return a copy of the entity options.
 const media = client.Media()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -235,6 +241,12 @@ Return a copy of the entity options.
 ```ts
 const photo = client.Photo()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
