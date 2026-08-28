@@ -20,8 +20,12 @@ class Justwatch(TypedDict):
     pass
 
 
-class JustwatchLoadMatch(TypedDict):
-    pass
+class JustwatchLoadMatchRequired(TypedDict):
+    q: Any
+
+
+class JustwatchLoadMatch(JustwatchLoadMatchRequired, total=False):
+    l: Any
 
 
 class Media(TypedDict, total=False):
@@ -36,13 +40,21 @@ class Photo(TypedDict, total=False):
     id: str
 
 
-class PhotoLoadMatch(TypedDict):
+class PhotoLoadMatchRequired(TypedDict):
     id: str
+
+
+class PhotoLoadMatch(PhotoLoadMatchRequired, total=False):
+    h: Any
+    w: Any
 
 
 class Search(TypedDict):
     pass
 
 
-class SearchLoadMatch(TypedDict):
-    pass
+class SearchLoadMatch(TypedDict, total=False):
+    lsn: Any
+    q: Any
+    tt: Any
+    v: Any

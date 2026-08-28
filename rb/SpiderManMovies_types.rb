@@ -13,8 +13,17 @@ class Justwatch
 end
 
 # Request payload for Justwatch#load.
-class JustwatchLoadMatch
-end
+#
+# @!attribute [rw] l
+#   @return [Object, nil]
+#
+# @!attribute [rw] q
+#   @return [Object]
+JustwatchLoadMatch = Struct.new(
+  :l,
+  :q,
+  keyword_init: true
+)
 
 # Media entity data model.
 #
@@ -47,8 +56,16 @@ Photo = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] h
+#   @return [Object, nil]
+#
+# @!attribute [rw] w
+#   @return [Object, nil]
 PhotoLoadMatch = Struct.new(
   :id,
+  :h,
+  :w,
   keyword_init: true
 )
 
@@ -57,6 +74,23 @@ class Search
 end
 
 # Request payload for Search#load.
-class SearchLoadMatch
-end
+#
+# @!attribute [rw] lsn
+#   @return [Object, nil]
+#
+# @!attribute [rw] q
+#   @return [Object, nil]
+#
+# @!attribute [rw] tt
+#   @return [Object, nil]
+#
+# @!attribute [rw] v
+#   @return [Object, nil]
+SearchLoadMatch = Struct.new(
+  :lsn,
+  :q,
+  :tt,
+  :v,
+  keyword_init: true
+)
 

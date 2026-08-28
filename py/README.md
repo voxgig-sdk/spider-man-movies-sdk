@@ -42,7 +42,7 @@ client = SpiderManMoviesSDK()
 
 ```python
 try:
-    justwatch = client.Justwatch().load()
+    justwatch = client.Justwatch().load({"q": "example_q"})
     print(justwatch)
 except Exception as err:
     print(f"load failed: {err}")
@@ -296,7 +296,7 @@ Create an instance: `justwatch = client.Justwatch()`
 #### Example: Load
 
 ```python
-justwatch = client.Justwatch().load()
+justwatch = client.Justwatch().load({"q": "q"})
 ```
 
 
@@ -361,6 +361,29 @@ Create an instance: `search = client.Search()`
 ```python
 search = client.Search().load()
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

@@ -18,6 +18,8 @@ type Justwatch struct {
 
 // JustwatchLoadMatch is the typed request payload for Justwatch.LoadTyped.
 type JustwatchLoadMatch struct {
+	L *any `json:"l,omitempty"`
+	Q any `json:"q"`
 }
 
 // Media is the typed data model for the media entity.
@@ -38,6 +40,8 @@ type Photo struct {
 // PhotoLoadMatch is the typed request payload for Photo.LoadTyped.
 type PhotoLoadMatch struct {
 	Id string `json:"id"`
+	H *any `json:"h,omitempty"`
+	W *any `json:"w,omitempty"`
 }
 
 // Search is the typed data model for the search entity.
@@ -46,6 +50,10 @@ type Search struct {
 
 // SearchLoadMatch is the typed request payload for Search.LoadTyped.
 type SearchLoadMatch struct {
+	Lsn *any `json:"lsn,omitempty"`
+	Q *any `json:"q,omitempty"`
+	Tt *any `json:"tt,omitempty"`
+	V *any `json:"v,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

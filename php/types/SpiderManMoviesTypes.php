@@ -20,6 +20,8 @@ class Justwatch
 /** Request payload for Justwatch#load. */
 class JustwatchLoadMatch
 {
+    public mixed $l = null;
+    public mixed $q;
 }
 
 /** Media entity data model. */
@@ -44,6 +46,8 @@ class Photo
 class PhotoLoadMatch
 {
     public string $id;
+    public mixed $h = null;
+    public mixed $w = null;
 }
 
 /** Search entity data model. */
@@ -54,5 +58,9 @@ class Search
 /** Request payload for Search#load. */
 class SearchLoadMatch
 {
+    public mixed $lsn = null;
+    public mixed $q = null;
+    public mixed $tt = null;
+    public mixed $v = null;
 }
 

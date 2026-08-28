@@ -36,7 +36,7 @@ local client = sdk.new()
 ### 3. Load a justwatch
 
 ```lua
-local justwatch, err = client:Justwatch():load()
+local justwatch, err = client:Justwatch():load({ q = "example_q" })
 if err then error(err) end
 print(justwatch)
 ```
@@ -280,7 +280,7 @@ Create an instance: `local justwatch = client:Justwatch(nil)`
 #### Example: Load
 
 ```lua
-local justwatch, err = client:Justwatch():load()
+local justwatch, err = client:Justwatch():load({ q = "q" })
 ```
 
 
@@ -345,6 +345,29 @@ Create an instance: `local search = client:Search(nil)`
 ```lua
 local search, err = client:Search():load()
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

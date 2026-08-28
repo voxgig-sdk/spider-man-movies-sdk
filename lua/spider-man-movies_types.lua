@@ -9,6 +9,8 @@
 ---@class Justwatch
 
 ---@class JustwatchLoadMatch
+---@field l? any
+---@field q any
 
 ---@class Media
 ---@field id? string
@@ -21,10 +23,16 @@
 
 ---@class PhotoLoadMatch
 ---@field id string
+---@field h? any
+---@field w? any
 
 ---@class Search
 
 ---@class SearchLoadMatch
+---@field lsn? any
+---@field q? any
+---@field tt? any
+---@field v? any
 
 local M = {}
 
