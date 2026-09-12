@@ -61,8 +61,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/justwatch",
-                ["parts"] = {
-                  "justwatch",
+                ["segments"] = {
+                  {
+                    ["lit"] = "justwatch",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -73,6 +75,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "justwatch",
                 },
               },
             },
@@ -88,6 +93,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "media",
         ["op"] = {
@@ -110,9 +119,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/media/{id}",
-                ["parts"] = {
-                  "media",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "media",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -122,6 +135,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "media",
+                  "{id}",
                 },
               },
             },
@@ -137,6 +154,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "photo",
         ["op"] = {
@@ -173,9 +194,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/photo/{id}",
-                ["parts"] = {
-                  "photo",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "photo",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -187,6 +212,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "photo",
+                  "{id}",
                 },
               },
             },
@@ -236,8 +265,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/search",
-                ["parts"] = {
-                  "search",
+                ["segments"] = {
+                  {
+                    ["lit"] = "search",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -250,6 +281,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "search",
                 },
               },
             },

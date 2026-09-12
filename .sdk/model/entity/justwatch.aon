@@ -30,8 +30,10 @@ main: kit: entity: justwatch: {
           }
           method: "GET"
           orig: "/justwatch"
-          parts: [
-            "justwatch"
+          segments: [
+            {
+              lit: "justwatch"
+            }
           ]
           select: {
             exist: [

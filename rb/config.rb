@@ -73,8 +73,10 @@ module SpiderManMoviesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/justwatch",
-                  "parts" => [
-                    "justwatch",
+                  "segments" => [
+                    {
+                      "lit" => "justwatch",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -86,6 +88,9 @@ module SpiderManMoviesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "justwatch",
+                  ],
                 },
               ],
             },
@@ -101,6 +106,10 @@ module SpiderManMoviesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "media",
           "op" => {
             "load" => {
@@ -122,9 +131,13 @@ module SpiderManMoviesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/media/{id}",
-                  "parts" => [
-                    "media",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "media",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -135,6 +148,10 @@ module SpiderManMoviesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "media",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -150,6 +167,10 @@ module SpiderManMoviesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "photo",
           "op" => {
             "load" => {
@@ -185,9 +206,13 @@ module SpiderManMoviesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/photo/{id}",
-                  "parts" => [
-                    "photo",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "photo",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -200,6 +225,10 @@ module SpiderManMoviesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "photo",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -248,8 +277,10 @@ module SpiderManMoviesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/search",
-                  "parts" => [
-                    "search",
+                  "segments" => [
+                    {
+                      "lit" => "search",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -263,6 +294,9 @@ module SpiderManMoviesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "search",
+                  ],
                 },
               ],
             },

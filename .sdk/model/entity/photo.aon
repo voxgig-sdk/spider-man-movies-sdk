@@ -52,9 +52,13 @@ main: kit: entity: photo: {
           }
           method: "GET"
           orig: "/photo/{id}"
-          parts: [
-            "photo"
-            "{id}"
+          segments: [
+            {
+              lit: "photo"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

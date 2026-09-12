@@ -87,8 +87,10 @@ class SpiderManMoviesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/justwatch',
-                  'parts' => [
-                    'justwatch',
+                  'segments' => [
+                    [
+                      'lit' => 'justwatch',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -99,6 +101,9 @@ class SpiderManMoviesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'justwatch',
                   ],
                 ],
               ],
@@ -114,6 +119,10 @@ class SpiderManMoviesConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'media',
           'op' => [
@@ -136,9 +145,13 @@ class SpiderManMoviesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/media/{id}',
-                  'parts' => [
-                    'media',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'media',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -148,6 +161,10 @@ class SpiderManMoviesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'media',
+                    '{id}',
                   ],
                 ],
               ],
@@ -163,6 +180,10 @@ class SpiderManMoviesConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'photo',
           'op' => [
@@ -199,9 +220,13 @@ class SpiderManMoviesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/photo/{id}',
-                  'parts' => [
-                    'photo',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'photo',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -213,6 +238,10 @@ class SpiderManMoviesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'photo',
+                    '{id}',
                   ],
                 ],
               ],
@@ -262,8 +291,10 @@ class SpiderManMoviesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search',
-                  'parts' => [
-                    'search',
+                  'segments' => [
+                    [
+                      'lit' => 'search',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -276,6 +307,9 @@ class SpiderManMoviesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'search',
                   ],
                 ],
               ],

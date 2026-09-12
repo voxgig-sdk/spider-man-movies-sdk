@@ -36,9 +36,13 @@ main: kit: entity: media: {
           }
           method: "GET"
           orig: "/media/{id}"
-          parts: [
-            "media"
-            "{id}"
+          segments: [
+            {
+              lit: "media"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
