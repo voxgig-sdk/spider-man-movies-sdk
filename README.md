@@ -105,7 +105,7 @@ local result, err = client:Media():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
+| TypeScript | `@voxgig-sdk/spider-man-movies-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
 | Python | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
 | PHP | `voxgig-sdk/spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/spider-man-movies-sdk/go` | `go get github.com/voxgig-sdk/spider-man-movies-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Media():load({ id = "test01" })
 ### TypeScript
 
 ```ts
-import { SpiderManMoviesSDK } from '@voxgig-sdk/spider-man-movies'
+import { SpiderManMoviesSDK } from '@voxgig-sdk/spider-man-movies-sdk'
 
 const client = new SpiderManMoviesSDK()
 
