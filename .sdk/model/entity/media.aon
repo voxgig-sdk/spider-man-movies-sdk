@@ -34,6 +34,12 @@ main: kit: entity: media: {
               }
             ]
           }
+          contract: {
+            id: "GET /media/{id}"
+            json: "{\"parameters\":[{\"description\":\"IMDb ID of the title to get the trailer video\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"video/mp4\",\"image/jpeg\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"successful operation\"},\"400\":{\"description\":\"invalid parameters\"},\"500\":{\"description\":\"internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/media/{id}"
           segments: [

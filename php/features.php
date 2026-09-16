@@ -4,7 +4,10 @@ declare(strict_types=1);
 // SpiderManMovies SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class SpiderManMoviesFeatures
@@ -14,8 +17,14 @@ class SpiderManMoviesFeatures
         switch ($name) {
             case "base":
                 return new SpiderManMoviesBaseFeature();
+            case "ratelimit":
+                return new SpiderManMoviesRatelimitFeature();
+            case "retry":
+                return new SpiderManMoviesRetryFeature();
             case "test":
                 return new SpiderManMoviesTestFeature();
+            case "timeout":
+                return new SpiderManMoviesTimeoutFeature();
             default:
                 return new SpiderManMoviesBaseFeature();
         }
@@ -31,7 +40,10 @@ class SpiderManMoviesFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

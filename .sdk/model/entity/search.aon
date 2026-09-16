@@ -42,6 +42,12 @@ main: kit: entity: search: {
               }
             ]
           }
+          contract: {
+            id: "GET /search"
+            json: "{\"consumes\":[\"application/x-www-form-urlencoded\"],\"parameters\":[{\"description\":\"Enter a word or phrase to search on (Search Query)\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"type\":\"string\"},{\"description\":\"Enter IMDb ID to display only one detailed result (Get more details of a particular IMDb ID)\",\"in\":\"query\",\"name\":\"tt\",\"required\":false,\"type\":\"string\"},{\"description\":\"if IMDb ID is a series, provide a Season Number to fetch episodes of that (Season Number)\",\"in\":\"query\",\"name\":\"lsn\",\"required\":false,\"type\":\"integer\"},{\"default\":1,\"description\":\"API version (reserved for future use)\",\"in\":\"query\",\"name\":\"v\",\"required\":false,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"successful operation\"},\"400\":{\"description\":\"invalid parameters\"},\"500\":{\"description\":\"internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/search"
           segments: [

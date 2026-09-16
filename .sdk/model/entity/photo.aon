@@ -50,6 +50,12 @@ main: kit: entity: photo: {
               }
             ]
           }
+          contract: {
+            id: "GET /photo/{id}"
+            json: "{\"parameters\":[{\"description\":\"IMDb ID of the title to get the poster photo\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"Width of the photo\",\"in\":\"query\",\"name\":\"w\",\"required\":false,\"type\":\"number\"},{\"description\":\"Height of the photo\",\"in\":\"query\",\"name\":\"h\",\"required\":false,\"type\":\"number\"}],\"produces\":[\"image/jpeg\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"successful operation\"},\"400\":{\"description\":\"invalid parameters\"},\"500\":{\"description\":\"internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/photo/{id}"
           segments: [

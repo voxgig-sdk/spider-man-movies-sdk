@@ -1,12 +1,18 @@
 # SpiderManMovies SDK feature factory
 
 from spidermanmovies_sdk.feature.base_feature import SpiderManMoviesBaseFeature
+from spidermanmovies_sdk.feature.ratelimit_feature import SpiderManMoviesRatelimitFeature
+from spidermanmovies_sdk.feature.retry_feature import SpiderManMoviesRetryFeature
 from spidermanmovies_sdk.feature.test_feature import SpiderManMoviesTestFeature
+from spidermanmovies_sdk.feature.timeout_feature import SpiderManMoviesTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: SpiderManMoviesBaseFeature(),
+    "ratelimit": lambda: SpiderManMoviesRatelimitFeature(),
+    "retry": lambda: SpiderManMoviesRetryFeature(),
     "test": lambda: SpiderManMoviesTestFeature(),
+    "timeout": lambda: SpiderManMoviesTimeoutFeature(),
 }
 
 

@@ -16,5 +16,38 @@
     "media": {
       "media_ref01": {}
     }
+  },
+  "requests": {
+    "GET /media/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "parameters": [
+          {
+            "description": "IMDb ID of the title to get the trailer video",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "video/mp4",
+          "image/jpeg"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "invalid parameters"
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
