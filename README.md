@@ -105,12 +105,12 @@ local result, err = client:Media():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/spider-man-movies-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
-| Python | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
-| PHP | `voxgig-sdk/spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
+| TypeScript | `@voxgig-sdk/spider-man-movies-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/tags) |
+| Python | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/tags) |
+| PHP | `voxgig-sdk/spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/spider-man-movies-sdk/go` | `go get github.com/voxgig-sdk/spider-man-movies-sdk/go@latest` |
-| Ruby | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
-| Lua | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) |
+| Ruby | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/tags) |
+| Lua | `voxgig-sdk-spider-man-movies` | publish pending — [install from git tag](https://github.com/voxgig-sdk/spider-man-movies-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/spider-man-movies-sdk/go-cli` | `go install github.com/voxgig-sdk/spider-man-movies-sdk/go-cli/cmd/spider-man-movies@latest` |
 | Go MCP server | `github.com/voxgig-sdk/spider-man-movies-sdk/go-mcp` | `go get github.com/voxgig-sdk/spider-man-movies-sdk/go-mcp@latest` |
 

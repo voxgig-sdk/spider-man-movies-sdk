@@ -127,18 +127,18 @@ class Config {
 
     entity: {
       
-      justwatch: {
-      },
-
-      media: {
-      },
-
-      photo: {
-      },
-
-      search: {
-      },
-
+        justwatch: {
+        },
+  
+        media: {
+        },
+  
+        photo: {
+        },
+  
+        search: {
+        },
+  
     }
   }
 

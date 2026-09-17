@@ -1,6 +1,6 @@
 # Entity Models
 
-@"justwatch.aon"
-@"media.aon"
-@"photo.aon"
-@"search.aon"
+@"./justwatch.aon"
+@"./media.aon"
+@"./photo.aon"
+@"./search.aon"
