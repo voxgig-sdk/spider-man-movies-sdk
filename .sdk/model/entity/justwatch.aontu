@@ -1,0 +1,63 @@
+# Entity: justwatch
+
+main: kit: entity: justwatch: {
+
+  alias: field: {}
+
+  name: "justwatch"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /justwatch"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "l"
+                or: "l"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/justwatch"
+          q: {
+            exist: [
+              "l"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "justwatch"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

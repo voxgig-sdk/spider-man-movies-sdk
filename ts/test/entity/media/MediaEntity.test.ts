@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('MediaEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","name":"id"},"name":"media","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /media/{id}","json":"{\"parameters\":[{\"description\":\"IMDb ID of the title to get the trailer video\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"video/mp4\",\"image/jpeg\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"successful operation\"},\"400\":{\"description\":\"invalid parameters\"},\"500\":{\"description\":\"internal server error\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/media/{id}","segments":[{"lit":"media"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"media","name__orig":"media","Name":"Media","name_":"media","name-":"media","NAME":"MEDIA","index$":1}, {"active":true,"entity":"media","key$":"BasicMediaFlow","kind":"basic","name":"BasicMediaFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"media_ref01","srcdatavar":"media_ref01_data","suffix":"_dt0"},"match":{"id":"media01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-media_ref01"}}],"index$":0}]}, 'Media')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"media","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /media/{id}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/media/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"media"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"media","name__orig":"media","Name":"Media","name_":"media","name-":"media","NAME":"MEDIA","index$":1}, {"active":true,"entity":"media","key$":"BasicMediaFlow","kind":"basic","name":"BasicMediaFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"media_ref01","srcdatavar":"media_ref01_data","suffix":"_dt0"},"m":{"id":"media01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-media_ref01"}}],"index$":0}]}, 'Media', {"GET /media/{id}":{"protocol":"http","responses":{"200":{"description":"successful operation"},"400":{"description":"invalid parameters"},"500":{"description":"internal server error"}},"produces":["video/mp4","image/jpeg"],"parameters":[{"in":"path","name":"id","description":"IMDb ID of the title to get the trailer video","required":true,"type":"string","index$":0}],"securitySource":"unspecified"}})
     }
     const client = setup.client
     const struct = setup.struct

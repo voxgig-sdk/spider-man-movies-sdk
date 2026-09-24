@@ -124,23 +124,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "l",
-                      "orig": "l",
-                      "type": "`$ANY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "q",
-                      "orig": "q",
-                      "reqd": True,
-                      "type": "`$ANY`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/justwatch",
@@ -149,19 +132,37 @@ def make_config():
                     "lit": "justwatch",
                   },
                 ],
+                "parts": [
+                  "justwatch",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "l",
+                      "orig": "l",
+                      "type": "`$ANY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "q",
+                      "orig": "q",
+                      "type": "`$ANY`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "l",
                     "q",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "justwatch",
-                ],
               },
             ],
           },
@@ -174,6 +175,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -188,17 +190,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/media/{id}",
@@ -210,19 +201,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "media",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "media",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -235,6 +238,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -249,31 +253,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "h",
-                      "orig": "h",
-                      "type": "`$ANY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "w",
-                      "orig": "w",
-                      "type": "`$ANY`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/photo/{id}",
@@ -285,6 +264,40 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "photo",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "h",
+                      "orig": "h",
+                      "type": "`$ANY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "w",
+                      "orig": "w",
+                      "type": "`$ANY`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "h",
@@ -292,14 +305,6 @@ def make_config():
                     "w",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "photo",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -317,34 +322,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "lsn",
-                      "orig": "lsn",
-                      "type": "`$ANY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "q",
-                      "orig": "q",
-                      "type": "`$ANY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "tt",
-                      "orig": "tt",
-                      "type": "`$ANY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "v",
-                      "orig": "v",
-                      "type": "`$ANY`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/search",
@@ -353,6 +330,42 @@ def make_config():
                     "lit": "search",
                   },
                 ],
+                "parts": [
+                  "search",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "lsn",
+                      "orig": "lsn",
+                      "type": "`$ANY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "q",
+                      "orig": "q",
+                      "type": "`$ANY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "tt",
+                      "orig": "tt",
+                      "type": "`$ANY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "v",
+                      "orig": "v",
+                      "type": "`$ANY`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "lsn",
@@ -361,13 +374,6 @@ def make_config():
                     "v",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "search",
-                ],
               },
             ],
           },
