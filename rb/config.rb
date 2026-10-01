@@ -127,7 +127,7 @@ module SpiderManMoviesConfig
                     "query" => [
                       {
                         "name" => "l",
-                        "orig" => "l",
+                        "orig" => "L",
                         "type" => "`$ANY`",
                         "kind" => "query",
                       },

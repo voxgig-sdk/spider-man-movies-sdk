@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 SpiderManMoviesUtility.registrar = ->(u) {
   u.clean = SpiderManMoviesUtilities::Clean
+  u.clean_add = SpiderManMoviesUtilities::CleanAdd
+  u.clean_explain = SpiderManMoviesUtilities::CleanExplain
   u.done = SpiderManMoviesUtilities::Done
   u.make_error = SpiderManMoviesUtilities::MakeError
   u.feature_add = SpiderManMoviesUtilities::FeatureAdd

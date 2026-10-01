@@ -144,7 +144,7 @@ def make_config():
                   "query": [
                     {
                       "name": "l",
-                      "orig": "l",
+                      "orig": "L",
                       "type": "`$ANY`",
                       "kind": "query",
                     },

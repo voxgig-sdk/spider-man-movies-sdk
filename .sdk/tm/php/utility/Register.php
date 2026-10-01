@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 SpiderManMoviesUtility::setRegistrar(function (SpiderManMoviesUtility $u): void {
     $u->clean = [SpiderManMoviesClean::class, 'call'];
+    $u->clean_add = [SpiderManMoviesClean::class, 'add'];
+    $u->clean_explain = [SpiderManMoviesDone::class, 'clean_explain'];
     $u->done = [SpiderManMoviesDone::class, 'call'];
     $u->make_error = [SpiderManMoviesMakeError::class, 'call'];
     $u->feature_add = [SpiderManMoviesFeatureAdd::class, 'call'];

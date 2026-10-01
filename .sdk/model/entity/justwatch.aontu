@@ -20,7 +20,7 @@ main: kit: entity: justwatch: {
               {
                 k: "query"
                 n: "l"
-                or: "l"
+                or: "L"
                 r: false
                 t: "`$ANY`"
               }
