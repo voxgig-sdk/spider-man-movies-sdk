@@ -18,18 +18,19 @@ main: kit: entity: justwatch: {
           g: {
             query: [
               {
+                ex: "en_IN"
                 k: "query"
                 n: "l"
                 or: "L"
                 r: false
-                t: "`$ANY`"
+                t: "`$STRING`"
               }
               {
                 k: "query"
                 n: "q"
                 or: "q"
                 r: true
-                t: "`$ANY`"
+                t: "`$STRING`"
               }
             ]
           }
@@ -37,7 +38,6 @@ main: kit: entity: justwatch: {
           o: "/justwatch"
           q: {
             exist: [
-              "l"
               "q"
             ]
           }

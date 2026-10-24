@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { SpiderManMoviesSDK, BaseFeature, stdutil } from '../../..'
+import { SpiderManMoviesSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('JustwatchEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = SpiderManMoviesSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Justwatch().load({"l":1,"q":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.SPIDER_MAN_MOVIES_TEST_LIVE
@@ -51,7 +63,7 @@ describe('JustwatchEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"justwatch","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /justwatch","source":"swagger2","version":2},"g":{"query":[{"a":true,"k":"query","n":"l","or":"L","r":false,"t":"`$ANY`","index$":0},{"a":true,"k":"query","n":"q","or":"q","r":true,"t":"`$ANY`","index$":1}]},"k":"http","m":"GET","o":"/justwatch","q":{"exist":["l","q"]},"r":{},"s":[{"lit":"justwatch"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"justwatch","name__orig":"justwatch","Name":"Justwatch","name_":"justwatch","name-":"justwatch","NAME":"JUSTWATCH","index$":0}, {"active":true,"entity":"justwatch","key$":"BasicJustwatchFlow","kind":"basic","name":"BasicJustwatchFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"justwatch_ref01","srcdatavar":"justwatch_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-justwatch_ref01"}}],"index$":0}]}, 'Justwatch', {"GET /justwatch":{"protocol":"http","parameters":[{"in":"query","name":"q","description":"Enter a word or phrase to search on (Search Query)","required":true,"type":"string","index$":0},{"in":"query","name":"L","description":"Enter the language and country code (as mentioned in the given format). The default value is 'en_IN' if not specified.","required":false,"type":"string","default":"en_IN","index$":1}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"justwatch","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /justwatch","source":"swagger2","version":2},"g":{"query":[{"a":true,"ex":"en_IN","k":"query","n":"l","or":"L","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"q","or":"q","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/justwatch","q":{"exist":["q"]},"r":{},"s":[{"lit":"justwatch"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"justwatch","name__orig":"justwatch","Name":"Justwatch","name_":"justwatch","name-":"justwatch","NAME":"JUSTWATCH","index$":0}, {"active":true,"entity":"justwatch","key$":"BasicJustwatchFlow","kind":"basic","name":"BasicJustwatchFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"justwatch_ref01","srcdatavar":"justwatch_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-justwatch_ref01"}}],"index$":0}]}, 'Justwatch', {"GET /justwatch":{"protocol":"http","parameters":[{"in":"query","name":"q","description":"Enter a word or phrase to search on (Search Query)","required":true,"type":"string","index$":0},{"in":"query","name":"L","description":"Enter the language and country code (as mentioned in the given format). The default value is 'en_IN' if not specified.","required":false,"type":"string","default":"en_IN","index$":1}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +84,12 @@ describe('JustwatchEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

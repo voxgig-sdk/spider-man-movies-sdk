@@ -1,8 +1,8 @@
 export interface Justwatch {
 }
 export interface JustwatchLoadMatch {
-    l?: any;
-    q: any;
+    l?: string;
+    q: string;
 }
 export interface Media {
     id?: string;
@@ -15,14 +15,14 @@ export interface Photo {
 }
 export interface PhotoLoadMatch {
     id: string;
-    h?: any;
-    w?: any;
+    h?: number;
+    w?: number;
 }
 export interface Search {
 }
 export interface SearchLoadMatch {
-    lsn?: any;
-    q?: any;
-    tt?: any;
-    v?: any;
+    lsn?: number;
+    q?: string;
+    tt?: string;
+    v?: number;
 }

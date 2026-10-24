@@ -22,41 +22,34 @@ main: kit: entity: search: {
                 n: "lsn"
                 or: "lsn"
                 r: false
-                t: "`$ANY`"
+                t: "`$INTEGER`"
               }
               {
                 k: "query"
                 n: "q"
                 or: "q"
                 r: false
-                t: "`$ANY`"
+                t: "`$STRING`"
               }
               {
                 k: "query"
                 n: "tt"
                 or: "tt"
                 r: false
-                t: "`$ANY`"
+                t: "`$STRING`"
               }
               {
+                ex: 1
                 k: "query"
                 n: "v"
                 or: "v"
                 r: false
-                t: "`$ANY`"
+                t: "`$INTEGER`"
               }
             ]
           }
           m: "GET"
           o: "/search"
-          q: {
-            exist: [
-              "lsn"
-              "q"
-              "tt"
-              "v"
-            ]
-          }
           s: [
             {
               lit: "search"

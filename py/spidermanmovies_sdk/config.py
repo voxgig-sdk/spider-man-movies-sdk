@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -145,13 +146,14 @@ def make_config():
                     {
                       "name": "l",
                       "orig": "L",
-                      "type": "`$ANY`",
+                      "type": "`$STRING`",
                       "kind": "query",
+                      "example": "en_IN",
                     },
                     {
                       "name": "q",
                       "orig": "q",
-                      "type": "`$ANY`",
+                      "type": "`$STRING`",
                       "kind": "query",
                       "reqd": True,
                     },
@@ -159,7 +161,6 @@ def make_config():
                 },
                 "select": {
                   "exist": [
-                    "l",
                     "q",
                   ],
                 },
@@ -287,22 +288,20 @@ def make_config():
                     {
                       "name": "h",
                       "orig": "h",
-                      "type": "`$ANY`",
+                      "type": "`$NUMBER`",
                       "kind": "query",
                     },
                     {
                       "name": "w",
                       "orig": "w",
-                      "type": "`$ANY`",
+                      "type": "`$NUMBER`",
                       "kind": "query",
                     },
                   ],
                 },
                 "select": {
                   "exist": [
-                    "h",
                     "id",
-                    "w",
                   ],
                 },
               },
@@ -343,37 +342,31 @@ def make_config():
                     {
                       "name": "lsn",
                       "orig": "lsn",
-                      "type": "`$ANY`",
+                      "type": "`$INTEGER`",
                       "kind": "query",
                     },
                     {
                       "name": "q",
                       "orig": "q",
-                      "type": "`$ANY`",
+                      "type": "`$STRING`",
                       "kind": "query",
                     },
                     {
                       "name": "tt",
                       "orig": "tt",
-                      "type": "`$ANY`",
+                      "type": "`$STRING`",
                       "kind": "query",
                     },
                     {
                       "name": "v",
                       "orig": "v",
-                      "type": "`$ANY`",
+                      "type": "`$INTEGER`",
                       "kind": "query",
+                      "example": 1,
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "lsn",
-                    "q",
-                    "tt",
-                    "v",
-                  ],
-                },
+                "select": {},
               },
             ],
           },

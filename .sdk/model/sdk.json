@@ -114,11 +114,12 @@
                     "query": [
                       {
                         "a": true,
+                        "ex": "en_IN",
                         "k": "query",
                         "n": "l",
                         "or": "L",
                         "r": false,
-                        "t": "`$ANY`"
+                        "t": "`$STRING`"
                       },
                       {
                         "a": true,
@@ -126,7 +127,7 @@
                         "n": "q",
                         "or": "q",
                         "r": true,
-                        "t": "`$ANY`"
+                        "t": "`$STRING`"
                       }
                     ]
                   },
@@ -135,7 +136,6 @@
                   "o": "/justwatch",
                   "q": {
                     "exist": [
-                      "l",
                       "q"
                     ]
                   },
@@ -278,7 +278,7 @@
                         "n": "h",
                         "or": "h",
                         "r": false,
-                        "t": "`$ANY`"
+                        "t": "`$NUMBER`"
                       },
                       {
                         "a": true,
@@ -286,7 +286,7 @@
                         "n": "w",
                         "or": "w",
                         "r": false,
-                        "t": "`$ANY`"
+                        "t": "`$NUMBER`"
                       }
                     ]
                   },
@@ -295,9 +295,7 @@
                   "o": "/photo/{id}",
                   "q": {
                     "exist": [
-                      "h",
-                      "id",
-                      "w"
+                      "id"
                     ]
                   },
                   "r": {},
@@ -348,7 +346,7 @@
                         "n": "lsn",
                         "or": "lsn",
                         "r": false,
-                        "t": "`$ANY`"
+                        "t": "`$INTEGER`"
                       },
                       {
                         "a": true,
@@ -356,7 +354,7 @@
                         "n": "q",
                         "or": "q",
                         "r": false,
-                        "t": "`$ANY`"
+                        "t": "`$STRING`"
                       },
                       {
                         "a": true,
@@ -364,29 +362,23 @@
                         "n": "tt",
                         "or": "tt",
                         "r": false,
-                        "t": "`$ANY`"
+                        "t": "`$STRING`"
                       },
                       {
                         "a": true,
+                        "ex": 1,
                         "k": "query",
                         "n": "v",
                         "or": "v",
                         "r": false,
-                        "t": "`$ANY`"
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
                   "k": "http",
                   "m": "GET",
                   "o": "/search",
-                  "q": {
-                    "exist": [
-                      "lsn",
-                      "q",
-                      "tt",
-                      "v"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -728,6 +720,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -968,7 +961,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -1021,6 +1014,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -1251,7 +1249,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1628,6 +1629,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

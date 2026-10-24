@@ -15,10 +15,10 @@ end
 # Request payload for Justwatch#load.
 #
 # @!attribute [rw] l
-#   @return [Object, nil]
+#   @return [String, nil]
 #
 # @!attribute [rw] q
-#   @return [Object]
+#   @return [String]
 JustwatchLoadMatch = Struct.new(
   :l,
   :q,
@@ -58,10 +58,10 @@ Photo = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] h
-#   @return [Object, nil]
+#   @return [Float, nil]
 #
 # @!attribute [rw] w
-#   @return [Object, nil]
+#   @return [Float, nil]
 PhotoLoadMatch = Struct.new(
   :id,
   :h,
@@ -76,16 +76,16 @@ end
 # Request payload for Search#load.
 #
 # @!attribute [rw] lsn
-#   @return [Object, nil]
+#   @return [Integer, nil]
 #
 # @!attribute [rw] q
-#   @return [Object, nil]
+#   @return [String, nil]
 #
 # @!attribute [rw] tt
-#   @return [Object, nil]
+#   @return [String, nil]
 #
 # @!attribute [rw] v
-#   @return [Object, nil]
+#   @return [Integer, nil]
 SearchLoadMatch = Struct.new(
   :lsn,
   :q,

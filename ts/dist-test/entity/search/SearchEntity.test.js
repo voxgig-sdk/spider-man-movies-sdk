@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Search();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.SpiderManMoviesSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Search().load({ "lsn": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.SPIDER_MAN_MOVIES_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "search", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /search", "source": "swagger2", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "lsn", "or": "lsn", "r": false, "t": "`$ANY`", "index$": 0 }, { "a": true, "k": "query", "n": "q", "or": "q", "r": false, "t": "`$ANY`", "index$": 1 }, { "a": true, "k": "query", "n": "tt", "or": "tt", "r": false, "t": "`$ANY`", "index$": 2 }, { "a": true, "k": "query", "n": "v", "or": "v", "r": false, "t": "`$ANY`", "index$": 3 }] }, "k": "http", "m": "GET", "o": "/search", "q": { "exist": ["lsn", "q", "tt", "v"] }, "r": {}, "s": [{ "lit": "search" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "search", "name__orig": "search", "Name": "Search", "name_": "search", "name-": "search", "NAME": "SEARCH", "index$": 3 }, { "active": true, "entity": "search", "key$": "BasicSearchFlow", "kind": "basic", "name": "BasicSearchFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "search_ref01", "srcdatavar": "search_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-search_ref01" } }], "index$": 0 }] }, 'Search', { "GET /search": { "protocol": "http", "parameters": [{ "in": "query", "name": "q", "description": "Enter a word or phrase to search on (Search Query)", "required": false, "type": "string", "index$": 0 }, { "in": "query", "name": "tt", "description": "Enter IMDb ID to display only one detailed result (Get more details of a particular IMDb ID)", "required": false, "type": "string", "index$": 1 }, { "in": "query", "name": "lsn", "description": "if IMDb ID is a series, provide a Season Number to fetch episodes of that (Season Number)", "required": false, "type": "integer", "index$": 2 }, { "in": "query", "name": "v", "description": "API version (reserved for future use)", "required": false, "type": "integer", "default": 1, "index$": 3 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "search", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /search", "source": "swagger2", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "lsn", "or": "lsn", "r": false, "t": "`$INTEGER`", "index$": 0 }, { "a": true, "k": "query", "n": "q", "or": "q", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "k": "query", "n": "tt", "or": "tt", "r": false, "t": "`$STRING`", "index$": 2 }, { "a": true, "ex": 1, "k": "query", "n": "v", "or": "v", "r": false, "t": "`$INTEGER`", "index$": 3 }] }, "k": "http", "m": "GET", "o": "/search", "q": {}, "r": {}, "s": [{ "lit": "search" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "search", "name__orig": "search", "Name": "Search", "name_": "search", "name-": "search", "NAME": "SEARCH", "index$": 3 }, { "active": true, "entity": "search", "key$": "BasicSearchFlow", "kind": "basic", "name": "BasicSearchFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "search_ref01", "srcdatavar": "search_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-search_ref01" } }], "index$": 0 }] }, 'Search', { "GET /search": { "protocol": "http", "parameters": [{ "in": "query", "name": "q", "description": "Enter a word or phrase to search on (Search Query)", "required": false, "type": "string", "index$": 0 }, { "in": "query", "name": "tt", "description": "Enter IMDb ID to display only one detailed result (Get more details of a particular IMDb ID)", "required": false, "type": "string", "index$": 1 }, { "in": "query", "name": "lsn", "description": "if IMDb ID is a series, provide a Season Number to fetch episodes of that (Season Number)", "required": false, "type": "integer", "index$": 2 }, { "in": "query", "name": "v", "description": "API version (reserved for future use)", "required": false, "type": "integer", "default": 1, "index$": 3 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +84,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != search_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

@@ -16,13 +16,24 @@ const PLAN = [
         "path": "/justwatch",
         "args": [],
         "select": {
-            "l": "v1",
-            "q": "v1"
+            "q": "v1",
+            "l": "en_IN"
         },
         "headers": [],
+        "cookies": [],
         "query": [
             "q",
             "L"
+        ],
+        "queryArgs": [
+            {
+                "name": "l",
+                "wire": "L"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -44,7 +55,9 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": null,
@@ -68,9 +81,20 @@ const PLAN = [
             "w": "v1"
         },
         "headers": [],
+        "cookies": [],
         "query": [
             "w",
             "h"
+        ],
+        "queryArgs": [
+            {
+                "name": "h",
+                "wire": "h"
+            },
+            {
+                "name": "w",
+                "wire": "w"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -88,14 +112,33 @@ const PLAN = [
             "lsn": "v1",
             "q": "v1",
             "tt": "v1",
-            "v": "v1"
+            "v": 1
         },
         "headers": [],
+        "cookies": [],
         "query": [
             "q",
             "tt",
             "lsn",
             "v"
+        ],
+        "queryArgs": [
+            {
+                "name": "lsn",
+                "wire": "lsn"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            },
+            {
+                "name": "tt",
+                "wire": "tt"
+            },
+            {
+                "name": "v",
+                "wire": "v"
+            }
         ],
         "auth": null,
         "status": 200,

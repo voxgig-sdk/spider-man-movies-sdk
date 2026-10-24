@@ -293,8 +293,6 @@ initialiser
 [Ss][Ee][Aa][Rr][Cc][Hh]
 [Ii][Dd]
 [Ii][Dd]
-[Ll][Ss][Nn]
-[Tt][Tt]
 [Ff][Rr][Ee][Ee]
 [Mm][Oo][Vv][Ii][Ee]
 [Dd][Bb]
@@ -368,6 +366,7 @@ initialiser
 [Ii][Ff]
 [Nn][Oo][Tt]
 [Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]
+[Ee][Nn]_[Ii][Nn]
 [Vv][Ii][Dd][Ee][Oo]
 [Mm][Pp]4
 [Ii][Mm][Aa][Gg][Ee]

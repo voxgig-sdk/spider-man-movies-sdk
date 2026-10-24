@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -120,13 +121,14 @@ func MakeConfig() map[string]any {
 										map[string]any{
 											"name": "l",
 											"orig": "L",
-											"type": "`$ANY`",
+											"type": "`$STRING`",
 											"kind": "query",
+											"example": "en_IN",
 										},
 										map[string]any{
 											"name": "q",
 											"orig": "q",
-											"type": "`$ANY`",
+											"type": "`$STRING`",
 											"kind": "query",
 											"reqd": true,
 										},
@@ -134,7 +136,6 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"l",
 										"q",
 									},
 								},
@@ -262,22 +263,20 @@ func MakeConfig() map[string]any {
 										map[string]any{
 											"name": "h",
 											"orig": "h",
-											"type": "`$ANY`",
+											"type": "`$NUMBER`",
 											"kind": "query",
 										},
 										map[string]any{
 											"name": "w",
 											"orig": "w",
-											"type": "`$ANY`",
+											"type": "`$NUMBER`",
 											"kind": "query",
 										},
 									},
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"h",
 										"id",
-										"w",
 									},
 								},
 							},
@@ -318,37 +317,31 @@ func MakeConfig() map[string]any {
 										map[string]any{
 											"name": "lsn",
 											"orig": "lsn",
-											"type": "`$ANY`",
+											"type": "`$INTEGER`",
 											"kind": "query",
 										},
 										map[string]any{
 											"name": "q",
 											"orig": "q",
-											"type": "`$ANY`",
+											"type": "`$STRING`",
 											"kind": "query",
 										},
 										map[string]any{
 											"name": "tt",
 											"orig": "tt",
-											"type": "`$ANY`",
+											"type": "`$STRING`",
 											"kind": "query",
 										},
 										map[string]any{
 											"name": "v",
 											"orig": "v",
-											"type": "`$ANY`",
+											"type": "`$INTEGER`",
 											"kind": "query",
+											"example": 1,
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"lsn",
-										"q",
-										"tt",
-										"v",
-									},
-								},
+								"select": map[string]any{},
 							},
 						},
 					},

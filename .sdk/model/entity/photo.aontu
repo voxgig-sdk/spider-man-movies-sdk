@@ -45,14 +45,14 @@ main: kit: entity: photo: {
                 n: "h"
                 or: "h"
                 r: false
-                t: "`$ANY`"
+                t: "`$NUMBER`"
               }
               {
                 k: "query"
                 n: "w"
                 or: "w"
                 r: false
-                t: "`$ANY`"
+                t: "`$NUMBER`"
               }
             ]
           }
@@ -60,9 +60,7 @@ main: kit: entity: photo: {
           o: "/photo/{id}"
           q: {
             exist: [
-              "h"
               "id"
-              "w"
             ]
           }
           s: [

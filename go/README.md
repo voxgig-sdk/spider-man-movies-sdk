@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/spider-man-movies-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/spider-man-movies-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/spider-man-movies-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -35,9 +35,10 @@ loading a specific record.
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
@@ -50,12 +51,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single justwatch — the value is the loaded record.
+    // Load a single justwatch — the value is the entity; Data() reads its record.
     justwatch, err := client.Justwatch(nil).Load(map[string]any{"q": "example_q"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(justwatch)
+    fmt.Println(justwatch.(sdk.Entity).Data())
 }
 ```
 
@@ -141,7 +142,7 @@ media, err := client.Media(nil).Load(
 if err != nil {
     panic(err)
 }
-fmt.Println(media) // the returned mock data
+fmt.Println(media.(sdk.Entity).Data()) // the entity's mock record
 ```
 
 ### Use a custom fetch function
@@ -229,7 +230,7 @@ All entities implement the `SpiderManMoviesEntity` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
+| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria, and return it. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -237,20 +238,20 @@ All entities implement the `SpiderManMoviesEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` | the entity record (`map[string]any`) |
+| `Load` | the entity, whose `Data()` reads its record (`map[string]any`) |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    justwatch, err := client.Justwatch(nil).Load(nil, nil)
+    justwatch, err := client.Justwatch(nil).Load(map[string]any{"q": "example"}, nil)
     if err != nil { /* handle */ }
-    // justwatch is the returned record
+    // justwatch is the entity; justwatch.(sdk.Entity).Data() reads its record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -317,7 +318,7 @@ justwatch, err := client.Justwatch(nil).Load(map[string]any{"q": "q"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(justwatch) // the loaded record
+fmt.Println(justwatch.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -344,7 +345,7 @@ media, err := client.Media(nil).Load(map[string]any{"id": "media_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(media) // the loaded record
+fmt.Println(media.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -371,7 +372,7 @@ photo, err := client.Photo(nil).Load(map[string]any{"id": "photo_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(photo) // the loaded record
+fmt.Println(photo.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -392,7 +393,7 @@ search, err := client.Search(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(search) // the loaded record
+fmt.Println(search.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 ## Features
@@ -529,7 +530,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 

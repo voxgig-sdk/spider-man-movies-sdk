@@ -21,11 +21,11 @@ class Justwatch(TypedDict):
 
 
 class JustwatchLoadMatchRequired(TypedDict):
-    q: Any
+    q: str
 
 
 class JustwatchLoadMatch(JustwatchLoadMatchRequired, total=False):
-    l: Any
+    l: str
 
 
 class Media(TypedDict, total=False):
@@ -45,8 +45,8 @@ class PhotoLoadMatchRequired(TypedDict):
 
 
 class PhotoLoadMatch(PhotoLoadMatchRequired, total=False):
-    h: Any
-    w: Any
+    h: float
+    w: float
 
 
 class Search(TypedDict):
@@ -54,7 +54,7 @@ class Search(TypedDict):
 
 
 class SearchLoadMatch(TypedDict, total=False):
-    lsn: Any
-    q: Any
-    tt: Any
-    v: Any
+    lsn: int
+    q: str
+    tt: str
+    v: int

@@ -79,6 +79,7 @@ module SpiderManMoviesConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -128,13 +129,14 @@ module SpiderManMoviesConfig
                       {
                         "name" => "l",
                         "orig" => "L",
-                        "type" => "`$ANY`",
+                        "type" => "`$STRING`",
                         "kind" => "query",
+                        "example" => "en_IN",
                       },
                       {
                         "name" => "q",
                         "orig" => "q",
-                        "type" => "`$ANY`",
+                        "type" => "`$STRING`",
                         "kind" => "query",
                         "reqd" => true,
                       },
@@ -142,7 +144,6 @@ module SpiderManMoviesConfig
                   },
                   "select" => {
                     "exist" => [
-                      "l",
                       "q",
                     ],
                   },
@@ -270,22 +271,20 @@ module SpiderManMoviesConfig
                       {
                         "name" => "h",
                         "orig" => "h",
-                        "type" => "`$ANY`",
+                        "type" => "`$NUMBER`",
                         "kind" => "query",
                       },
                       {
                         "name" => "w",
                         "orig" => "w",
-                        "type" => "`$ANY`",
+                        "type" => "`$NUMBER`",
                         "kind" => "query",
                       },
                     ],
                   },
                   "select" => {
                     "exist" => [
-                      "h",
                       "id",
-                      "w",
                     ],
                   },
                 },
@@ -326,37 +325,31 @@ module SpiderManMoviesConfig
                       {
                         "name" => "lsn",
                         "orig" => "lsn",
-                        "type" => "`$ANY`",
+                        "type" => "`$INTEGER`",
                         "kind" => "query",
                       },
                       {
                         "name" => "q",
                         "orig" => "q",
-                        "type" => "`$ANY`",
+                        "type" => "`$STRING`",
                         "kind" => "query",
                       },
                       {
                         "name" => "tt",
                         "orig" => "tt",
-                        "type" => "`$ANY`",
+                        "type" => "`$STRING`",
                         "kind" => "query",
                       },
                       {
                         "name" => "v",
                         "orig" => "v",
-                        "type" => "`$ANY`",
+                        "type" => "`$INTEGER`",
                         "kind" => "query",
+                        "example" => 1,
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "lsn",
-                      "q",
-                      "tt",
-                      "v",
-                    ],
-                  },
+                  "select" => {},
                 },
               ],
             },
